@@ -3,7 +3,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 async function init() {
   fetchSVG();
-  //changeViewBox();
+  changeViewBox();
 }
 
 async function fetchSVG() {
@@ -14,14 +14,4 @@ async function fetchSVG() {
 
   document.querySelector("section.scene1").innerHTML = mySVGData;
   document.getElementById("room").setAttribute("viewBox", "270 120 100 100");
-}
-
-function turnOnTheLight() {
-  document.querySelectorAll(".cls-87, .cls-88").forEach(element => {
-    element.addEventListener("click, lightOn");
-  });
-}
-
-function lightOn(evt) {
-  console.log(evt.target);
 }

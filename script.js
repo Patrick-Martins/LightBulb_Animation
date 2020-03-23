@@ -7,10 +7,11 @@ async function init() {
 }
 
 async function fetchSVG() {
-  let response = await fetch("final_room.svg");
+  let response = await fetch("final-room.svg");
   let mySVGData = await response.text();
 
   console.log(mySVGData);
 
   document.querySelector("section.scene1").innerHTML = mySVGData;
+  document.getElementById("room").setAttribute("viewBox", "270 120 100 100");
 }

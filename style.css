@@ -1,0 +1,41 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  overflow-y: hidden;
+}
+
+#open-book {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: beat 1s ease-in-out alternate infinite;
+}
+
+@keyframes beat {
+  to {
+    transform: rotateX(10deg);
+  }
+}
+@keyframes heartBeat {
+  0% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.002);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.002);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+}

@@ -13,5 +13,5 @@ async function fetchSVG() {
   console.log(mySVGData);
 
   document.querySelector("section.scene1").innerHTML = mySVGData;
-  document.getElementById("room").setAttribute("viewBox", "270 120 100 100");
+  document.getElementById("room").setAttribute("viewBox", "279 130 81 100");
 }

@@ -1,4 +1,42 @@
+* {
+  box-sizing: border-box;
+}
+
 #iphone,
 #laptop {
   display: none;
+}
+.modal-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(139, 69, 19, 0.5);
+}
+.hidden {
+  display: none;
+}
+
+.modal {
+  background-color: #eae0c2;
+  width: 92%;
+  height: 92%;
+}
+.restart {
+  font-size: 50px;
+  font-weight: bold;
+  color: #fff200;
+  background-color: #9a512f;
+  border-radius: 15px;
+}
+.next {
+  font-size: 50px;
+  font-weight: bold;
+  color: #fff200;
+  background-color: #9a512f;
+  border-radius: 15px;
 }

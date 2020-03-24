@@ -3,6 +3,12 @@
   margin: 0;
 }
 
+body {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  background-color: beige;
+}
+
 html {
   overflow-y: hidden;
 }

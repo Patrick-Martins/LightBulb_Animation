@@ -30,6 +30,7 @@
 }
 
 .restart {
+  font-size: 25px;
   font-weight: bold;
   color: #fff200;
   background-color: #9a512f;
@@ -51,6 +52,7 @@
   margin: 0;
 }
 .next {
+  font-size: 25px;
   font-weight: bold;
   color: #fff200;
   background-color: #9a512f;

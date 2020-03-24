@@ -6,18 +6,15 @@ function init() {
 }
 let clicked;
 async function fetchSVG() {
-  fetch("edisons-first-lamp.svg")
-    .then(r => r.text())
-    .then(text => {
-      document.querySelector("section.lamp").innerHTML = text;
-    })
-    .then(() => fetch("bubble.svg"))
-    .then(r => r.text())
-    .then(text => {
-      document.querySelector("section.bubbles").innerHTML = text;
-      animateBubbles();
-      editLamp();
-    });
+  let response = await fetch("edisons-first-lamp.svg");
+  let mySVGData = await response.text();
+  document.querySelector("section.lamp").innerHTML = mySVGData;
+
+  response = await fetch("bubble.svg");
+  mySVGData = await response.text();
+  document.querySelector("section.bubbles").innerHTML = mySVGData;
+  animateBubbles();
+  editLamp();
 }
 
 function animateBubbles() {

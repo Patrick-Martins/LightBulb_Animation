@@ -27,7 +27,7 @@ function turnOnTheLight() {
   });
 }
 
-//Makes the washing-machine clickable --> calls te animation
+//Makes the washing-machine clickable --> calls tte animation
 function turnOnTheWM() {
   document.querySelectorAll("#washing-machine").forEach(element => {
     element.addEventListener("click", wash);
@@ -43,7 +43,7 @@ function turnOnTheTV() {
   });
 }
 
-var lampIsOn = true;
+var lampIsOn = false;
 //Displays the light
 function lightOn() {
   if (lampIsOn) {
@@ -56,7 +56,10 @@ function lightOn() {
 }
 
 function tvOn() {
-  console.log("hello");
+  var tvButtonTop = document.getElementById("topbutton-tv");
+  var tvButtonBottom = document.getElementById("bottombutton-tv");
+  tvButtonTop.classList.toggle("spin");
+  tvButtonBottom.classList.toggle("spin");
 }
 
 function wash() {

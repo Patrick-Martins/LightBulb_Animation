@@ -3,6 +3,12 @@
   display: none;
 }
 
+/*Hides the light of the lamp*/
+#light-standlamp {
+  display: none;
+}
+
+/*Washing-machine animation*/
 .wash {
   animation: wash 10s;
 }
@@ -27,5 +33,18 @@
   40%,
   60% {
     transform: translate3d(4px, 0, 0);
+  }
+}
+
+/*TV buttons turning animation*/
+.spin {
+  -webkit-animation: rotation 2s infinite linear;
+}
+@-webkit-keyframes rotation {
+  from {
+    -webkit-transform: rotate(0deg);
+  }
+  to {
+    -webkit-transform: rotate(359deg);
   }
 }

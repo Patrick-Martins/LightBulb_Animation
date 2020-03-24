@@ -19,7 +19,7 @@ async function fetchSVG() {
 
   //document.getElementById("room").setAttribute("viewBox", "270 120 100 100");
 }
-/****************** STANDLAMP ANIMATION ***********************************/
+/****************** STANDLAMP ANIMATION *******************************************************/
 
 //Makes the lamp clickable
 function turnOnTheLight() {
@@ -41,7 +41,7 @@ function lightOn() {
   }
 }
 
-/*********************** WASHINGMACHINE ANIMATION *********************************************/
+/*********************** WASHINGMACHINE ANIMATION **********************************************/
 
 //Makes the washing-machine clickable --> calls tte animation
 function turnOnTheWM() {

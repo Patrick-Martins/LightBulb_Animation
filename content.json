@@ -1,0 +1,100 @@
+[
+  {
+    "context": "timeline",
+    "text-content": [
+      {
+        "year": 1800,
+        "image-url": "",
+        "description": "In 1800, Italian inventor Alessandro Volta developed the first practical method of generating electricity, the voltaic pile, which consists of discs of zinc, copper and salted wet cardboard being the predecessor of the modern battery."
+      },
+      {
+        "year": 1802,
+        "image-url": "",
+        "description": "In 1802 Humphry Davy, an English chemist and inventor, produced the world's first electric lamp by connecting voltaic piles to charcoal electrodes, the electric arc lamp."
+      },
+      {
+        "year": 1840,
+        "image-url": "",
+        "description": "In 1840, British scientist Warren de la Rue developed an efficiently designed light bulb using a coiled platinum filament instead of copper."
+      },
+      {
+        "year": 1848,
+        "image-url": "",
+        "description": "In 1848, Englishman William Staite improved the duration of conventional arc lamps by developing a clockwork mechanism that regulates the movement of the lamps. "
+      },
+      {
+        "year": 1850,
+        "image-url": "",
+        "description": "In 1850, English chemist Joseph Swan tackled the cost-effectiveness problem of previous inventors."
+      },
+      {
+        "year": 1860,
+        "image-url": "",
+        "description": "1860 Joseph Swan had developed a light bulb that used carbonized paper filaments instead of ones made of platinum."
+      },
+      {
+        "year": 1878,
+        "image-url": "",
+        "description": "1878 Joseph Swan received a patent in the United Kingdom."
+      },
+      {
+        "year": 1879,
+        "image-url": "",
+        "description": [
+          "In September of 1879 Joseph Swan demonstrated a working lamp in a lecture in Newcastle.",
+          "In December of 1879 Thomas Edison demonstrated his light bulb with better modifications to Swan’s model that included a different filament."
+        ]
+      },
+      {
+        "year": 1880,
+        "image-url": "",
+        "description": "In 1880 the two inventors eventually joined forces and formed Edison-Swan United, which became one of the world’s largest manufacturers of light bulbs, followed by the founding of the Edison Electric Illuminating Company in New York both having a huge success in commercialising the light bulb."
+      }
+    ]
+  },
+  {
+    "context": "process-intro",
+    "text-content": "Between 1878 and 1880, Edison and his associates worked seriously to develop the light bulb. They worked on at least 3000 different theories for developing an efficient incandescent lamp.",
+    "image-assets": []
+  },
+  {
+    "context": "process-curiosity",
+    "text-content": "Incandescent lamps make light by using electricity to heat a thin strip of material, called filament, until it gets hot enough to glow.",
+    "image-assets": []
+  },
+  {
+    "context": "process-conclusion",
+    "text-content": "By 1879 Edison managed to create his first electric light, which burned for a few short hours. In order to improve the bulb, Edison tested over 6000 materials for the filament!",
+    "image-assets": []
+  },
+  {
+    "context": "filament-game",
+    "text-content": "Help Thomas Edison find the best material for the filament in the light bulb!",
+    "image-assets": []
+  },
+  {
+    "context": "congratulations-message",
+    "text-content": "Edison discovered that when using bamboo as the filament, the bulb could burn for 1200 hours!The bamboo became the standard filament for the next 10 years.",
+    "image-assets": []
+  },
+  {
+    "context": "work-impact",
+    "text-content": "The 24 hours working time was possible since the light bulb became more popular and we became less dependent on the time of the day. The increase of the working hours had a huge impact in the economy since more working time meant more productivity for companies and more money flowing in the economy. Increased luminescence in the workplace helped make it easier for laborers to see potential workplace hazards, thus preventing accidents and making workplaces safer.",
+    "image-assets": []
+  },
+  {
+    "context": "lifestyle-impact",
+    "text-content": "Many people found that increased nighttime luminosity made it possible to enjoy leisure activities late into the night.Candles and oil-based lamps were dangerous fire hazards, leading to many yearly deaths. The light bulb made for a safer nighttime home environment.",
+    "image-assets": []
+  },
+  {
+    "context": "technology",
+    "text-content": "In 1882 the world's first coal-fired public power station, the Edison Electric Light Station, was built in London, a project of Thomas Edison organized by Edward Johnson. In September 1882 in New York, the Pearl Street Station was established by Edison to provide electric lighting in the lower Manhattan Island area. Plugs and sockets for portable appliances started becoming available in the 1880s.",
+    "image-assets": []
+  },
+  {
+    "context": "last-scene",
+    "text-content": "After homes installed electric outlets, it opened the opportunity for personal use of electric devices. This invention made it possible to enjoy leisure activities in our homes today, such as watching tv, playing video games or chilling with our laptops.",
+    "image-assets": []
+  }
+]

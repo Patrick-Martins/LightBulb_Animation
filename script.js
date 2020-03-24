@@ -4,9 +4,17 @@ import { TweenLite } from "gsap/all";
 import { TweenMax } from "gsap/all";
 
 window.addEventListener("DOMContentLoaded", init);
+let contentArray = [];
+let contentCurrentIndex = 0;
 
-async function init() {
+const settings = {
+  currentContent: ""
+};
+
+function init() {
   fetchSVG();
+  fetchContentJSON();
+  addClickNext();
 }
 
 async function fetchSVG() {
@@ -24,5 +32,51 @@ function clickBook() {
   openModal.addEventListener("click", function() {
     modalBg.classList.remove("hidden");
     console.log("openModal");
+    updateStatus();
+    updateModal();
+  });
+}
+
+function fetchContentJSON() {
+  fetch("content.json")
+    .then(response => response.json())
+    .then(saveData);
+}
+
+function saveData(content) {
+  //saveJSON data in array
+  contentArray = content;
+}
+
+function updateStatus() {
+  //update status in settings object
+  settings.currentContent = contentArray[contentCurrentIndex].context;
+  console.log(settings.currentContent);
+}
+
+function updateModal() {
+  if (settings.currentContent == "last-scene") {
+    document.querySelector(".modal-bg").classList.add("hidden");
+    //animation zooming out
+    TweenMax.to("#room", 1.5, { attr: { viewBox: "0 0 600 600" } });
+  } else {
+    //change content of modal by appending a template with class of settings.currentContent
+    const template = document.querySelector(`.${settings.currentContent}`).content;
+    const templateCopy = template.cloneNode(true);
+    console.log(templateCopy);
+    const modal_content = document.querySelector(".content");
+    modal_content.innerHTML = "";
+    modal_content.appendChild(templateCopy);
+  }
+}
+
+function addClickNext() {
+  const nextBTN = document.querySelector(".next");
+  const restartBTN = document.querySelector(".restart");
+
+  nextBTN.addEventListener("click", () => {
+    contentCurrentIndex++;
+    updateStatus();
+    updateModal();
   });
 }

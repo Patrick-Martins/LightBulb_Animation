@@ -3,6 +3,7 @@ window.addEventListener("DOMContentLoaded", init);
 
 async function init() {
   fetchSVG();
+  fetchTimeline();
 }
 
 async function fetchSVG() {
@@ -12,6 +13,14 @@ async function fetchSVG() {
   document.querySelector("section.scene1").innerHTML = mySVGData;
   document.getElementById("room").setAttribute("viewBox", "270 120 100 100");
   clickBook();
+}
+
+async function fetchTimeline() {
+  let response = await fetch("timeline.svg");
+  let mySVGData = await response.text();
+
+  document.querySelector("section.timeline").innerHTML = mySVGData;
+  document.getElementById("timeline");
 }
 
 function clickBook() {

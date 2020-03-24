@@ -1,4 +1,8 @@
 "use strict";
+import { gsap } from "gsap";
+import { TweenLite } from "gsap/all";
+import { TweenMax } from "gsap/all";
+
 window.addEventListener("DOMContentLoaded", init);
 
 async function init() {

@@ -38,7 +38,8 @@
 
 /*TV buttons turning animation*/
 .spin {
-  -webkit-animation: rotation 2s infinite linear;
+  -webkit-animation: rotation 5s infinite linear;
+  transform-origin: center;
 }
 @-webkit-keyframes rotation {
   from {

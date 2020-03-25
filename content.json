@@ -1,0 +1,32 @@
+[
+  {
+    "context": "timeline"
+  },
+  {
+    "context": "process-intro"
+  },
+  {
+    "context": "process-curiosity"
+  },
+  {
+    "context": "process-conclusion"
+  },
+  {
+    "context": "filament-game"
+  },
+  {
+    "context": "congratulations-message"
+  },
+  {
+    "context": "work-impact"
+  },
+  {
+    "context": "lifestyle-impact"
+  },
+  {
+    "context": "technology"
+  },
+  {
+    "context": "last-scene"
+  }
+]

@@ -1,7 +1,8 @@
-"use strict";
 import { gsap } from "gsap";
 import { TweenLite } from "gsap/all";
 import { TweenMax } from "gsap/all";
+
+("use strict");
 
 window.addEventListener("DOMContentLoaded", init);
 let contentArray = [];

@@ -3,6 +3,8 @@
   margin: 0;
   box-sizing: border-box;
 }
+<<<<<<< HEAD
+=======
 
 html {
   overflow-y: hidden;
@@ -23,6 +25,7 @@ html {
   }
 }
 
+>>>>>>> master
 p {
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 25px;
@@ -121,7 +124,13 @@ p {
   margin-top: auto;
 }
 
+<<<<<<< HEAD
+svg#house {
+  width: 30px;
+  height: 30px;
+=======
 svg#edisons-first-lamp,
 svg#bubbles {
   height: 50vh;
+>>>>>>> master
 }

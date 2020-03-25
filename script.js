@@ -1,14 +1,17 @@
-"use strict";
 import { gsap } from "gsap";
 import { TweenLite } from "gsap/all";
 import { TweenMax } from "gsap/all";
 import { TimelineMax } from "gsap/all";
 import { Power1 } from "gsap/all";
 
+("use strict");
+
 window.addEventListener("DOMContentLoaded", init);
 let contentArray = [];
 let contentCurrentIndex = 0;
 let clicked;
+
+let timelineArray = [];
 
 const settings = {
   currentContent: ""
@@ -18,6 +21,8 @@ function init() {
   fetchSVG();
   //changeViewBox();
   fetchTimeline();
+  fetchAllImages();
+  //   fetchTimeline();
   // fetchGameSVG();
   fetchContentJSON();
   addClickNext();
@@ -110,12 +115,28 @@ function turnOnTheSpeaker() {
   clickBook();
 }
 
-/******************************************************************************************************************/
+function fetchAllImages() {
+  fetchImage("timeline.svg", ".timeline");
+  //   fetchImage("content_images/house_fire.svg", ".lifestyle-impact");
+  fetchImage("content_images/house.svg", ".lifestyle-impact");
+}
+
 async function fetchTimeline() {
-  let response = await fetch("timeline.svg");
+  fetch("timeline.json")
+    .then(response => response.json())
+    .then(saveTimelineData);
+}
+
+function saveTimelineData(TimelineData) {
+  timelineArray = TimelineData;
+  console.log(timelineArray);
+}
+
+async function fetchImage(imageName, elementToAppendTo) {
+  let response = await fetch(imageName);
   let mySVGData = await response.text();
 
-  document.querySelector(".timeline").innerHTML += mySVGData;
+  document.querySelector(elementToAppendTo).innerHTML += mySVGData;
 }
 
 async function fetchGameSVG() {
@@ -172,6 +193,19 @@ function updateModal() {
     document.querySelector("#edison-lamp").classList.add("hidden");
     document.querySelector("#laptop").classList.remove("hidden");
     document.querySelector("#iphone").classList.remove("hidden");
+  } else if (settings.currentContent == "timeline") {
+    //go through array timeline
+    timelineArray.forEach(addClickToYear);
+    TweenLite.to("#room", 2.5, { attr: { viewBox: "100 50 390 390" }, ease: Power1.easeInOut, delay: 1 });
+    document.querySelector("#open-book").classList.add("hidden");
+    document.querySelector("#pen").classList.add("hidden");
+    document.querySelector("#key").classList.add("hidden");
+    document.querySelector("#stack-books").classList.add("hidden");
+    document.querySelector("#ink").classList.add("hidden");
+    document.querySelector("#ruler").classList.add("hidden");
+    document.querySelector("#edison-lamp").classList.add("hidden");
+    document.querySelector("#laptop").classList.remove("hidden");
+    document.querySelector("#iphone").classList.remove("hidden");
   } else {
     if (settings.currentContent == "filament-game") {
       fetchGameSVG();
@@ -184,6 +218,16 @@ function updateModal() {
     modal_content.innerHTML = "";
     modal_content.appendChild(templateCopy);
   }
+}
+
+function addClickToYear(yearObject) {
+  //select the button for the object
+  /////document.getElementById(yearObject.yearID).addEventListener("click", changeTimelineContent(yearObject));
+}
+
+function changeTimelineContent(timelineYear) {
+  //change text of timeline-text
+  //change timeline-image
 }
 
 function addClickNext() {

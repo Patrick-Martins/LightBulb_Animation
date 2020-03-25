@@ -2,6 +2,7 @@
 import { gsap } from "gsap";
 import { TweenLite } from "gsap/all";
 import { TweenMax } from "gsap/all";
+import { TimelineMax } from "gsap/all";
 
 window.addEventListener("DOMContentLoaded", init);
 let contentArray = [];
@@ -13,13 +14,10 @@ const settings = {
 
 function init() {
   fetchSVG();
-<<<<<<< HEAD
   //changeViewBox();
-=======
   fetchTimeline();
   fetchContentJSON();
   addClickNext();
->>>>>>> master
 }
 
 async function fetchSVG() {
@@ -27,10 +25,9 @@ async function fetchSVG() {
   let mySVGData = await response.text();
 
   document.querySelector("section.scene1").innerHTML = mySVGData;
-<<<<<<< HEAD
   turnOnTheLight();
-  turnOnTheTV();
   turnOnTheWM();
+  turnOnTheTV();
 
   //document.getElementById("room").setAttribute("viewBox", "270 120 100 100");
 }
@@ -58,44 +55,100 @@ function lightOn() {
 
 /*********************** WASHINGMACHINE ANIMATION **********************************************/
 
-//Makes the washing-machine clickable --> calls tte animation
 function turnOnTheWM() {
-  document.querySelectorAll("#washing-machine").forEach(element => {
-    element.addEventListener("click", wash);
-    console.log(element);
-  });
-}
-
-//Washingmachine starts shaking
-function wash() {
-  var washingMachine = document.getElementById("washing-machine-glass");
-  washingMachine.classList.toggle("wash");
+  var element = document.getElementById("washing-machine-glass");
+  TweenMax.to(element, 0.1, { x: "+=2", yoyo: true, repeat: -1 });
+  TweenMax.to(element, 0.1, { x: "-=2", yoyo: true, repeat: -1 });
 }
 
 /************************* TV ANIMATION *********************************************************/
-//Makes the TV clickable --> calls the animation
-function turnOnTheTV() {
-  document.querySelectorAll("#tv").forEach(element => {
-    element.addEventListener("click", tvOn);
-    console.log(element);
-  });
-}
-
-// function tvOn() {
-//   antiClockwiseSpin();
-//   clockwiseSpin();
+// function turnOnTheTV() {
+//   var element1 = document.getElementById("topbutton-tv");
+//   TweenMax.to(element1, 0.5, { rotation: "360", ease: Linear.easeNone, repeat: -1 }, { timeScale: 0 });
+//   var element2 = document.getElementById("bottombutton-tv");
+//   TweenMax.to(element2, 0.5, { rotation: "360", ease: Linear.easeNone, repeat: -1 }, { timeScale: 0 });
 // }
 
-function tvOn() {
+//Makes the TV clickable --> calls the animation
+
+function turnOnTheTV() {
   var tvButtonTop = document.getElementById("topbutton-tv");
   var tvButtonBottom = document.getElementById("bottombutton-tv");
   tvButtonTop.classList.toggle("spin");
   tvButtonBottom.classList.toggle("spin");
-=======
-  document.getElementById("room").setAttribute("viewBox", "270 120 100 100");
-  clickBook();
 }
 
+// function turnOnTheTV() {
+//   document.querySelectorAll("#tv").forEach(element => {
+//     element.addEventListener("click", tvOn);
+//     console.log(element);
+//   });
+// }
+
+// function tvOn() {
+//   var tvButtonTop = document.getElementById("topbutton-tv");
+//   var tvButtonBottom = document.getElementById("bottombutton-tv");
+//   tvButtonTop.classList.toggle("spin");
+//   tvButtonBottom.classList.toggle("spin");
+// }
+
+/************************************** SPEAKER ANIMATION *********************************************************/
+
+// var rotateCD,
+//   pauseTween,
+//   playBtn = document.getElementById("play"),
+//   pauseBtn = document.getElementById("pause"),
+//   audio = document.createElement("audio");
+
+// audio.loop = true;
+// audio.src = "https://upload.wikimedia.org/wikipedia/en/d/d8/You_Spin_Me_Round_by_Dead_or_Alive.ogg";
+
+// rotateCD = new TweenMax("#topbutton-tv", 0.3, {
+//   rotation: 360,
+//   ease: Linear.easeNone,
+//   repeat: -1,
+//   paused: true
+// }).timeScale(0);
+
+// play.onclick = function() {
+//   rotateCD.play();
+//   TweenLite.to(rotateCD, 3, { timeScale: 1 });
+
+//   pauseTween && pauseTween.kill();
+//   if (audio.paused) TweenLite.set(audio, { volume: 0, playbackRate: 0.5 });
+//   TweenLite.to(audio, 3, { volume: 1, playbackRate: 1 });
+//   audio.play();
+// };
+
+// pause.onclick = function() {
+//   TweenLite.to(rotateCD, 3, {
+//     timeScale: 0,
+//     onComplete: function() {
+//       this.pause();
+//     }
+//   });
+
+//   pauseTween && pauseTween.kill();
+//   pauseTween = TweenLite.to(audio, 3, {
+//     volume: 0,
+//     playbackRate: 0.5,
+//     onComplete: audio.pause,
+//     callbackScope: audio
+//   });
+// };
+
+// var pulse1 = document.getElementById("big-notes");
+// var pulse2 = document.getElementById("small-notes");
+// var pulse3 = document.getElementById("big-sound");
+// var pulse4 = document.getElementById("small-sound");
+// var pulse5 = document.getElementById("sub-note");
+
+// var tl = new TimelineMax({ repeat: 100, repeatDelay: 0.5 });
+
+// tl.fromTo(pulse1, 1, { transformOrigin: "center center", autoAlpha: 1, scale: 1 }, { transformOrigin: "center center", autoAlpha: 0, scale: 1.5, ease: Quad.easeInOut });
+// tl.fromTo(pulse2, 1, { transformOrigin: "center center", autoAlpha: 1, scale: 1 }, { transformOrigin: "center center", autoAlpha: 0, scale: 1.5, ease: Quad.easeInOut }, 0.5);
+
+/******************************************************************************************************************/
 async function fetchTimeline() {
   let response = await fetch("timeline.svg");
   let mySVGData = await response.text();
@@ -157,5 +210,4 @@ function addClickNext() {
     updateStatus();
     updateModal();
   });
->>>>>>> master
 }

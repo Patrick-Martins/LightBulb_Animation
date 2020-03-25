@@ -105,17 +105,6 @@ function turnOnTheSpeaker() {
   TweenMax.to(element, 0.1, { x: "-=1", y: "-2", yoyo: true, repeat: -1 });
 }
 
-// var pulse1 = document.getElementById("big-notes");
-// var pulse2 = document.getElementById("small-notes");
-// var pulse3 = document.getElementById("big-sound");
-// var pulse4 = document.getElementById("small-sound");
-// var pulse5 = document.getElementById("sub-note");
-
-// var tl = new TimelineMax({ repeat: 100, repeatDelay: 0.5 });
-
-// tl.fromTo(pulse1, 1, { transformOrigin: "center center", autoAlpha: 1, scale: 1 }, { transformOrigin: "center center", autoAlpha: 0, scale: 1.5, ease: Quad.easeInOut });
-// tl.fromTo(pulse2, 1, { transformOrigin: "center center", autoAlpha: 1, scale: 1 }, { transformOrigin: "center center", autoAlpha: 0, scale: 1.5, ease: Quad.easeInOut }, 0.5);
-
 /******************************************************************************************************************/
 async function fetchTimeline() {
   let response = await fetch("timeline.svg");

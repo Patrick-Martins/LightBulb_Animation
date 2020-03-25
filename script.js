@@ -66,6 +66,7 @@ function updateModal() {
   if (settings.currentContent == "last-scene") {
     document.querySelector(".modal-bg").classList.add("hidden");
     //animation zooming out
+    //https://codepen.io/aarongarciah/pen/kkQGwg animates de viewbox to increase and show
     TweenMax.to("#room", 1.5, { attr: { viewBox: "0 0 600 600" } });
   } else {
     //change content of modal by appending a template with class of settings.currentContent

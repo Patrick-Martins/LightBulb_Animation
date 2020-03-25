@@ -3,6 +3,7 @@ import { gsap } from "gsap";
 import { TweenLite } from "gsap/all";
 import { TweenMax } from "gsap/all";
 import { Power1 } from "gsap/all";
+import { Bounce } from "gsap/all";
 
 window.addEventListener("DOMContentLoaded", init);
 let contentArray = [];
@@ -47,6 +48,31 @@ async function fetchGameSVG() {
   document.querySelector("section.bubbles").innerHTML = mySVGData;
   animateBubbles();
   editLamp();
+}
+
+async function fetchMaterialsSVG() {
+  let response = await fetch("materials.svg");
+  let mySVGData = await response.text();
+  document.querySelector(".content").innerHTML += mySVGData;
+  animateMaterials();
+}
+
+async function fetchBambooSVG() {
+  let response = await fetch("theBamboo.svg");
+  let mySVGData = await response.text();
+  document.querySelector(".content").innerHTML += mySVGData;
+  animateBamboo();
+}
+
+function animateBamboo() {
+  const bamboo = document.querySelector("#theBamboo");
+  console.log(bamboo);
+
+  TweenLite.from(bamboo, 2, { scale: 0, opacity: 0, ease: Power1.easeOut }, 0.2);
+  TweenLite.from(bamboo, 1.8, { y: -10, repeat: -1, yoyo: true, ease: Power1.easeInOut });
+}
+function animateMaterials() {
+  TweenLite.staggerFrom(".material", 2, { scale: 0, opacity: 0, ease: Bounce.easeOut }, 0.2);
 }
 function clickBook() {
   const openBook = document.getElementById("open-book");
@@ -94,6 +120,11 @@ function updateModal() {
   } else {
     if (settings.currentContent == "filament-game") {
       fetchGameSVG();
+    } else if (settings.currentContent == "process-conclusion") {
+      console.log("hi");
+      fetchMaterialsSVG();
+    } else if (settings.currentContent == "congratulations-message") {
+      fetchBambooSVG();
     }
     //change content of modal by appending a template with class of settings.currentContent
     const template = document.querySelector(`.${settings.currentContent}`).content;
@@ -148,7 +179,6 @@ function clearAll() {
   });
 }
 function editLamp() {
-  document.querySelector(".Lampst6").classList.add("hidden");
   document.querySelector("#lamp").addEventListener("click", checkMaterial);
 }
 function checkMaterial() {
@@ -158,9 +188,10 @@ function checkMaterial() {
     console.log("That's right!");
 
     document.querySelector(".Lampst6").classList.remove("hidden");
-    document.querySelector("#filament").classList.remove("hidden");
+    document.querySelector(".Lampst55").classList.remove("hidden");
+    console.log("after");
 
-    document.querySelector("#filament").style.stroke = "orange";
+    document.querySelector(".Lampst55").style.stroke = "orange";
   } else {
     const lamp = document.querySelector("#lamp");
     TweenLite.to(lamp, 0.1, { x: +5, repeat: 3, yoyo: true, ease: Power1.linear });

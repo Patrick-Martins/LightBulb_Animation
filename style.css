@@ -22,15 +22,38 @@ html {
 
 p {
   font-family: Georgia, Times, "Times New Roman", serif;
-  font-size: 25px;
+  font-size: 3vw;
+  max-width: 80%;
+  margin: auto;
+}
+
+h2 {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 3vw;
+  max-width: 80%;
+  margin: auto;
 }
 
 .gameContainer {
   display: grid;
   position: relative;
-  grid-template-columns: 30% 50%;
+  grid-template-columns: 30% 60%;
   grid-gap: 10%;
   width: 90%;
+  margin: auto;
+}
+
+svg#bubble {
+  position: relative;
+  bottom: 0;
+}
+
+svg#theBamboo {
+  width: 30%;
+}
+.content svg {
+  max-width: 80%;
+  display: block;
   margin: auto;
 }
 .modal-bg {
@@ -94,9 +117,4 @@ p {
   padding: 5px;
   align-self: flex-end;
   margin-top: auto;
-}
-
-svg#edisons-first-lamp,
-svg#bubbles {
-  height: 50vh;
 }

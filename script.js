@@ -196,16 +196,6 @@ function updateModal() {
   } else if (settings.currentContent == "timeline") {
     //go through array timeline
     timelineArray.forEach(addClickToYear);
-    TweenLite.to("#room", 2.5, { attr: { viewBox: "100 50 390 390" }, ease: Power1.easeInOut, delay: 1 });
-    document.querySelector("#open-book").classList.add("hidden");
-    document.querySelector("#pen").classList.add("hidden");
-    document.querySelector("#key").classList.add("hidden");
-    document.querySelector("#stack-books").classList.add("hidden");
-    document.querySelector("#ink").classList.add("hidden");
-    document.querySelector("#ruler").classList.add("hidden");
-    document.querySelector("#edison-lamp").classList.add("hidden");
-    document.querySelector("#laptop").classList.remove("hidden");
-    document.querySelector("#iphone").classList.remove("hidden");
   } else {
     if (settings.currentContent == "filament-game") {
       fetchGameSVG();

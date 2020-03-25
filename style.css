@@ -3,9 +3,6 @@
   margin: 0;
   box-sizing: border-box;
 }
-<<<<<<< HEAD
-=======
-
 html {
   overflow-y: hidden;
 }
@@ -25,7 +22,6 @@ html {
   }
 }
 
->>>>>>> master
 p {
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 25px;
@@ -45,7 +41,6 @@ p {
   display: none;
 }
 
-
 /*TV buttons turning animation*/
 .spin {
   -webkit-animation: rotation 3s infinite linear;
@@ -59,8 +54,9 @@ p {
   to {
     -webkit-transform: rotate(359deg);
   }
-
+}
 /*Styling the modal*/
+
 .modal-bg {
   position: fixed;
   top: 0;
@@ -124,13 +120,11 @@ p {
   margin-top: auto;
 }
 
-<<<<<<< HEAD
 svg#house {
   width: 30px;
   height: 30px;
-=======
+}
 svg#edisons-first-lamp,
 svg#bubbles {
   height: 50vh;
->>>>>>> master
 }

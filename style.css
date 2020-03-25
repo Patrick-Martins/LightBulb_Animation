@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+p {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 25px;
+}
+
 #iphone,
 #laptop {
   display: none;
@@ -25,18 +30,46 @@
   background-color: #eae0c2;
   width: 92%;
   height: 92%;
+  display: flex;
+  flex-direction: column;
 }
+
 .restart {
-  font-size: 50px;
+  font-size: 25px;
   font-weight: bold;
   color: #fff200;
   background-color: #9a512f;
-  border-radius: 15px;
+  box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+  display: block;
+  border-radius: 50em;
+  position: relative;
+  text-align: center;
+  width: max-content;
+  margin: 10px;
+  padding: 5px;
+}
+.next h1 {
+  padding: 0;
+  margin: 0;
+}
+.restart h1 {
+  padding: 0;
+  margin: 0;
 }
 .next {
-  font-size: 50px;
+  font-size: 25px;
   font-weight: bold;
   color: #fff200;
   background-color: #9a512f;
-  border-radius: 15px;
+  box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+  box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
+  display: block;
+  border-radius: 50em;
+  position: relative;
+  text-align: center;
+  width: max-content;
+  margin: 10px;
+  padding: 5px;
+  align-self: flex-end;
+  margin-top: auto;
 }

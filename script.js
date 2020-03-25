@@ -14,6 +14,7 @@ const settings = {
 
 function init() {
   fetchSVG();
+  fetchTimeline();
   fetchContentJSON();
   addClickNext();
 }
@@ -27,10 +28,17 @@ async function fetchSVG() {
   clickBook();
 }
 
+async function fetchTimeline() {
+  let response = await fetch("timeline.svg");
+  let mySVGData = await response.text();
+
+  document.querySelector(".timeline").innerHTML += mySVGData;
+}
+
 function clickBook() {
-  const openModal = document.getElementById("open-book");
+  const openBook = document.getElementById("open-book");
   const modalBg = document.querySelector(".modal-bg");
-  openModal.addEventListener("click", function() {
+  openBook.addEventListener("click", function() {
     modalBg.classList.remove("hidden");
     console.log("openModal");
     updateStatus();
@@ -59,6 +67,7 @@ function updateModal() {
   if (settings.currentContent == "last-scene") {
     document.querySelector(".modal-bg").classList.add("hidden");
     //animation zooming out
+    //https://codepen.io/aarongarciah/pen/kkQGwg animates de viewbox to increase and show
     TweenMax.to("#room", 1.5, { attr: { viewBox: "0 0 600 600" } });
   } else {
     //change content of modal by appending a template with class of settings.currentContent

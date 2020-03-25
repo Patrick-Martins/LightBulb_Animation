@@ -24,13 +24,22 @@ html {
 
 p {
   font-family: Georgia, Times, "Times New Roman", serif;
-  font-size: 25px;
+  font-size: 3vw;
+  max-width: 80%;
+  margin: auto;
+}
+
+h2 {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 3vw;
+  max-width: 80%;
+  margin: auto;
 }
 
 .gameContainer {
   display: grid;
   position: relative;
-  grid-template-columns: 30% 50%;
+  grid-template-columns: 30% 60%;
   grid-gap: 10%;
   width: 90%;
   margin: auto;
@@ -43,6 +52,7 @@ p {
 
 /*TV buttons turning animation*/
 .spin {
+  animation: rotation 3s infinite linear;
   -webkit-animation: rotation 3s infinite linear;
   transform-origin: center;
   transform-box: fill-box;
@@ -55,8 +65,28 @@ p {
     -webkit-transform: rotate(359deg);
   }
 }
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
 /*Styling the modal*/
 
+svg#bubble {
+  position: relative;
+}
+
+svg#theBamboo {
+  width: 30%;
+}
+.content svg {
+  max-width: 80%;
+  display: block;
+  margin: auto;
+}
 .modal-bg {
   position: fixed;
   top: 0;
@@ -118,13 +148,4 @@ p {
   padding: 5px;
   align-self: flex-end;
   margin-top: auto;
-}
-
-svg#house {
-  width: 30px;
-  height: 30px;
-}
-svg#edisons-first-lamp,
-svg#bubbles {
-  height: 50vh;
 }

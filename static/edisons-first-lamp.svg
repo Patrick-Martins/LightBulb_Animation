@@ -9,6 +9,7 @@
 	.Lampst3{fill:none;stroke:#000000;stroke-miterlimit:10;}
 	.Lampst4{opacity:0.5;fill:#A9D1D1;stroke:#000000;stroke-miterlimit:10;enable-background:new    ;}
 	.Lampst5{fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
+	.Lampst55{fill:none;stroke:#000000;stroke-width:2;stroke-miterlimit:10;}
 	.Lampst7{display:inline;opacity:0.9;fill:url(#SVGID_1_);stroke:url(#SVGID_2_);stroke-miterlimit:10;enable-background:new    ;}
 	.Lampst8{display:inline;opacity:0.4;fill:#F2FF61;stroke:#000000;stroke-miterlimit:10;enable-background:new    ;}
 	.Lampst9{display:inline;fill:none;stroke:#000000;stroke-miterlimit:10;}
@@ -91,6 +92,6 @@
 	<line class="Lampst10" x1="293.5" y1="357.6" x2="328.5" y2="271.8"/>
 	<line class="Lampst10" x1="252.6" y1="357.2" x2="217.6" y2="271.4"/>
 </g>
-<path id="filament" class="Lampst5 hidden" d="M222.3,271.7c0,0,4.5-4.9,7.5-4.5s5.6,4.9,10.9,4.9c5.3,0,3.8-2,10.1-2.5s6,4.5,11.3,4.5
+<path id="filament" class="Lampst55 hidden" d="M222.3,271.7c0,0,4.5-4.9,7.5-4.5s5.6,4.9,10.9,4.9c5.3,0,3.8-2,10.1-2.5s6,4.5,11.3,4.5
 	s11.3-2.9,16.2-2.9s10.5,4.9,13.2,4.9c2.6,0,4.1-4.5,10.9-4.5s11.3,3.3,13.2,4.5c1.9,1.2,8.6-3.7,8.6-3.7"/>
 </svg>

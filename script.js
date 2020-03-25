@@ -14,7 +14,7 @@ const settings = {
 
 function init() {
   fetchSVG();
-  fetchTimeline();
+  fetchAllImages();
   fetchContentJSON();
   addClickNext();
 }
@@ -28,11 +28,17 @@ async function fetchSVG() {
   clickBook();
 }
 
-async function fetchTimeline() {
-  let response = await fetch("timeline.svg");
+function fetchAllImages() {
+  fetchImage("timeline.svg", ".timeline");
+  //   fetchImage("content_images/house_fire.svg", ".lifestyle-impact");
+  fetchImage("content_images/house.svg", ".lifestyle-impact");
+}
+
+async function fetchImage(imageName, elementToAppendTo) {
+  let response = await fetch(imageName);
   let mySVGData = await response.text();
 
-  document.querySelector(".timeline").innerHTML += mySVGData;
+  document.querySelector(elementToAppendTo).innerHTML += mySVGData;
 }
 
 function clickBook() {

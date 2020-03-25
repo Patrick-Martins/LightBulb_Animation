@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
 }
-
 p {
   font-family: Georgia, Times, "Times New Roman", serif;
   font-size: 25px;
@@ -72,4 +71,9 @@ p {
   padding: 5px;
   align-self: flex-end;
   margin-top: auto;
+}
+
+svg#house {
+  width: 30px;
+  height: 30px;
 }

@@ -8,12 +8,6 @@ html {
   overflow-y: hidden;
 }
 
-body.game {
-  display: grid;
-  grid-template-columns: 35% 65%;
-  background-color: beige;
-}
-
 #open-book {
   transform-origin: center;
   transform-box: fill-box;
@@ -31,6 +25,14 @@ p {
   font-size: 25px;
 }
 
+.gameContainer {
+  display: grid;
+  position: relative;
+  grid-template-columns: 30% 50%;
+  grid-gap: 10%;
+  width: 90%;
+  margin: auto;
+}
 .modal-bg {
   position: fixed;
   top: 0;
@@ -52,6 +54,7 @@ p {
   height: 92%;
   display: flex;
   flex-direction: column;
+  padding: 2%;
 }
 
 .restart {
@@ -85,11 +88,15 @@ p {
   box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
   display: block;
   border-radius: 50em;
-  position: relative;
   text-align: center;
   width: max-content;
   margin: 10px;
   padding: 5px;
   align-self: flex-end;
   margin-top: auto;
+}
+
+svg#edisons-first-lamp,
+svg#bubbles {
+  height: 50vh;
 }

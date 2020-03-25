@@ -7,6 +7,7 @@ import { Power1 } from "gsap/all";
 window.addEventListener("DOMContentLoaded", init);
 let contentArray = [];
 let contentCurrentIndex = 0;
+let clicked;
 
 const settings = {
   currentContent: ""
@@ -80,7 +81,7 @@ function updateModal() {
     document.querySelector(".modal-bg").classList.add("hidden");
     //animation zooming out
     //https://codepen.io/aarongarciah/pen/kkQGwg animates de viewbox to increase and show
-    TweenMax.to("#room", 2.5, { attr: { viewBox: "100 50 390 390" }, ease: Power1.easeInOut, delay: 1 });
+    TweenLite.to("#room", 2.5, { attr: { viewBox: "100 50 390 390" }, ease: Power1.easeInOut, delay: 1 });
     document.querySelector("#open-book").classList.add("hidden");
     document.querySelector("#pen").classList.add("hidden");
     document.querySelector("#key").classList.add("hidden");
@@ -91,6 +92,9 @@ function updateModal() {
     document.querySelector("#laptop").classList.remove("hidden");
     document.querySelector("#iphone").classList.remove("hidden");
   } else {
+    if (settings.currentContent == "filament-game") {
+      fetchGameSVG();
+    }
     //change content of modal by appending a template with class of settings.currentContent
     const template = document.querySelector(`.${settings.currentContent}`).content;
     const templateCopy = template.cloneNode(true);
@@ -126,7 +130,7 @@ function random() {
 let delayed = 0;
 function animate(bubble) {
   console.log(delayed + " " + bubble.id);
-  TweenMax.from(bubble, 1.8, { y: -20, repeat: -1, yoyo: true, ease: Power1.easeInOut, delay: random() });
+  TweenLite.from(bubble, 1.8, { y: -20, repeat: -1, yoyo: true, ease: Power1.easeInOut, delay: random() });
 
   delayed += 0.2;
 
@@ -144,21 +148,23 @@ function clearAll() {
   });
 }
 function editLamp() {
-  document.querySelector(".Lampst6").setAttribute("display", "none");
-  document.querySelector("#filament").setAttribute("display", "none");
-  document.querySelector("#glass").addEventListener("click", checkMaterial);
+  document.querySelector(".Lampst6").classList.add("hidden");
+  document.querySelector("#lamp").addEventListener("click", checkMaterial);
 }
 function checkMaterial() {
+  console.log("hola");
+
   if (clicked == "bamboo") {
     console.log("That's right!");
 
-    document.querySelector(".Lampst6").setAttribute("display", "static");
-    document.querySelector("#filament").setAttribute("display", "static");
+    document.querySelector(".Lampst6").classList.remove("hidden");
+    document.querySelector("#filament").classList.remove("hidden");
+
     document.querySelector("#filament").style.stroke = "orange";
   } else {
     const lamp = document.querySelector("#lamp");
-    TweenMax.to(lamp, 0.1, { x: +5, repeat: 3, yoyo: true, ease: Power1.linear });
-    TweenMax.to(lamp, 0.1, { x: -5, ease: Power1.linear }, 0.2);
+    TweenLite.to(lamp, 0.1, { x: +5, repeat: 3, yoyo: true, ease: Power1.linear });
+    TweenLite.to(lamp, 0.1, { x: -5, ease: Power1.linear }, 0.2);
 
     console.log("Wrong!");
   }

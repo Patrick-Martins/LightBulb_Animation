@@ -28,6 +28,7 @@ async function fetchSVG() {
   turnOnTheLight();
   turnOnTheWM();
   turnOnTheTV();
+  turnOnTheSpeaker();
 
   //document.getElementById("room").setAttribute("viewBox", "270 120 100 100");
 }
@@ -81,6 +82,28 @@ function turnOnTheTV() {
 }
 
 /************************************** SPEAKER ANIMATION *********************************************************/
+
+function turnOnTheSpeaker() {
+  var element = document.getElementById("big-notes");
+  TweenMax.to(element, 0.2, { x: "+=1", y: "+2", yoyo: true, repeat: -1 });
+  TweenMax.to(element, 0.2, { x: "-=1", y: "-2", yoyo: true, repeat: -1 });
+
+  var element = document.getElementById("small-notes");
+  TweenMax.to(element, 0.2, { x: "+=1", y: "+2", yoyo: true, repeat: -1 });
+  TweenMax.to(element, 0.2, { x: "-=1", y: "-2", yoyo: true, repeat: -1 });
+
+  var element = document.getElementById("sub-sound");
+  TweenMax.to(element, 0.1, { x: "+=1", y: "+2", yoyo: true, repeat: -1 });
+  TweenMax.to(element, 0.1, { x: "-=1", y: "-2", yoyo: true, repeat: -1 });
+
+  var element = document.getElementById("big-sound");
+  TweenMax.to(element, 0.1, { x: "+=1", y: "+2", yoyo: true, repeat: -1 });
+  TweenMax.to(element, 0.1, { x: "-=1", y: "-2", yoyo: true, repeat: -1 });
+
+  var element = document.getElementById("small-sound");
+  TweenMax.to(element, 0.1, { x: "+=1", y: "+2", yoyo: true, repeat: -1 });
+  TweenMax.to(element, 0.1, { x: "-=1", y: "-2", yoyo: true, repeat: -1 });
+}
 
 // var pulse1 = document.getElementById("big-notes");
 // var pulse2 = document.getElementById("small-notes");

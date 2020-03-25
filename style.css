@@ -1,5 +1,23 @@
 * {
+  padding: 0;
+  margin: 0;
   box-sizing: border-box;
+}
+
+html {
+  overflow-y: hidden;
+}
+
+#open-book {
+  transform-origin: center;
+  transform-box: fill-box;
+  animation: beat 1s ease-in-out alternate infinite;
+}
+
+@keyframes beat {
+  to {
+    transform: scaleX(1.1) scaleY(1.1);
+  }
 }
 
 p {
@@ -7,9 +25,13 @@ p {
   font-size: 25px;
 }
 
-#iphone,
-#laptop {
-  display: none;
+.gameContainer {
+  display: grid;
+  position: relative;
+  grid-template-columns: 30% 50%;
+  grid-gap: 10%;
+  width: 90%;
+  margin: auto;
 }
 
 /*Hides the light of the lamp*/
@@ -54,6 +76,7 @@ p {
   height: 92%;
   display: flex;
   flex-direction: column;
+  padding: 2%;
 }
 
 .restart {
@@ -87,11 +110,15 @@ p {
   box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
   display: block;
   border-radius: 50em;
-  position: relative;
   text-align: center;
   width: max-content;
   margin: 10px;
   padding: 5px;
   align-self: flex-end;
   margin-top: auto;
+}
+
+svg#edisons-first-lamp,
+svg#bubbles {
+  height: 50vh;
 }

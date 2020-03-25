@@ -26,6 +26,6 @@
     "parcel-plugin-static-files-copy": "^2.3.1"
   },
   "dependencies": {
-    "gsap": "^3.2.6"
+    "gsap": "file:gsap-bonus.tgz"
   }
 }

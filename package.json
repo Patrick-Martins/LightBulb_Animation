@@ -4,7 +4,7 @@
   "description": "",
   "main": "script.js",
   "scripts": {
-    "start": "parcel game.html --open"
+    "start": "parcel index.html --open"
   },
   "repository": {
     "type": "git",

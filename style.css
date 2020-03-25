@@ -20,7 +20,7 @@ p {
 
 /*TV buttons turning animation*/
 .spin {
-  -webkit-animation: rotation 5s infinite linear;
+  -webkit-animation: rotation 3s infinite linear;
   transform-origin: center;
   transform-box: fill-box;
 }

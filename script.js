@@ -62,6 +62,8 @@ function turnOnTheWM() {
 }
 
 /************************* TV ANIMATION *********************************************************/
+//GSAP animation for the TV
+
 // function turnOnTheTV() {
 //   var element1 = document.getElementById("topbutton-tv");
 //   TweenMax.to(element1, 0.5, { rotation: "360", ease: Linear.easeNone, repeat: -1 }, { timeScale: 0 });
@@ -78,64 +80,7 @@ function turnOnTheTV() {
   tvButtonBottom.classList.toggle("spin");
 }
 
-// function turnOnTheTV() {
-//   document.querySelectorAll("#tv").forEach(element => {
-//     element.addEventListener("click", tvOn);
-//     console.log(element);
-//   });
-// }
-
-// function tvOn() {
-//   var tvButtonTop = document.getElementById("topbutton-tv");
-//   var tvButtonBottom = document.getElementById("bottombutton-tv");
-//   tvButtonTop.classList.toggle("spin");
-//   tvButtonBottom.classList.toggle("spin");
-// }
-
 /************************************** SPEAKER ANIMATION *********************************************************/
-
-// var rotateCD,
-//   pauseTween,
-//   playBtn = document.getElementById("play"),
-//   pauseBtn = document.getElementById("pause"),
-//   audio = document.createElement("audio");
-
-// audio.loop = true;
-// audio.src = "https://upload.wikimedia.org/wikipedia/en/d/d8/You_Spin_Me_Round_by_Dead_or_Alive.ogg";
-
-// rotateCD = new TweenMax("#topbutton-tv", 0.3, {
-//   rotation: 360,
-//   ease: Linear.easeNone,
-//   repeat: -1,
-//   paused: true
-// }).timeScale(0);
-
-// play.onclick = function() {
-//   rotateCD.play();
-//   TweenLite.to(rotateCD, 3, { timeScale: 1 });
-
-//   pauseTween && pauseTween.kill();
-//   if (audio.paused) TweenLite.set(audio, { volume: 0, playbackRate: 0.5 });
-//   TweenLite.to(audio, 3, { volume: 1, playbackRate: 1 });
-//   audio.play();
-// };
-
-// pause.onclick = function() {
-//   TweenLite.to(rotateCD, 3, {
-//     timeScale: 0,
-//     onComplete: function() {
-//       this.pause();
-//     }
-//   });
-
-//   pauseTween && pauseTween.kill();
-//   pauseTween = TweenLite.to(audio, 3, {
-//     volume: 0,
-//     playbackRate: 0.5,
-//     onComplete: audio.pause,
-//     callbackScope: audio
-//   });
-// };
 
 // var pulse1 = document.getElementById("big-notes");
 // var pulse2 = document.getElementById("small-notes");

@@ -1,6 +1,9 @@
 import { gsap } from "gsap";
 import { TweenLite } from "gsap/all";
 import { TweenMax } from "gsap/all";
+import { TimelineMax } from "gsap/all";
+import { Power1 } from "gsap/all";
+import { Bounce } from "gsap/all";
 import { Power1 } from "gsap/all";
 import { Bounce } from "gsap/all";
 import { _createElement } from "gsap/CSSPlugin";
@@ -29,6 +32,7 @@ async function init() {
   // fetchGameSVG();
   fetchContentJSON();
   addClickNext();
+  addClickPrevious();
 }
 
 async function fetchSVG() {
@@ -324,10 +328,10 @@ function animateMaterials() {
 function clickBook() {
   const openBook = document.getElementById("open-book");
   const modalBg = document.querySelector(".modal-bg");
-  openBook.addEventListener("click", function() {
+  openBook.addEventListener("click", function(btn) {
     modalBg.classList.remove("hidden");
     console.log("openModal");
-    updateStatus();
+    updateStatus(btn.target.className);
     updateModal();
   });
 }
@@ -343,10 +347,17 @@ function saveData(content) {
   contentArray = content;
 }
 
-function updateStatus() {
-  //update status in settings object
-  settings.currentContent = contentArray[contentCurrentIndex].context;
-  console.log(settings.currentContent);
+function updateStatus(btnClass) {
+  //   console.log(btn.target);
+  if (btnClass === "back" && contentCurrentIndex === -1) {
+    //closeModal
+    document.querySelector(".modal-bg").classList.add("hidden");
+    contentCurrentIndex = 0;
+  } else {
+    //update status in settings object
+    settings.currentContent = contentArray[contentCurrentIndex].context;
+    console.log(settings.currentContent);
+  }
 }
 
 function updateModal() {
@@ -370,6 +381,18 @@ function updateModal() {
     document.querySelector("#edison-lamp").classList.add("hidden");
     document.querySelector("#laptop").classList.remove("hidden");
     document.querySelector("#iphone").classList.remove("hidden");
+
+    //create restart button and add inner html and give class restart
+    const newRestartButton = document.createElement("div");
+    newRestartButton.innerHTML = "&#8634";
+    newRestartButton.classList.add("restart");
+
+    //append button to body
+    document.querySelector("body").appendChild(newRestartButton);
+
+    newRestartButton.addEventListener("click", () => {
+      history.go(0);
+    });
   } else {
     //change content of modal by appending a template with class of settings.currentContent
     const template = document.querySelector(`.${settings.currentContent}`).content;
@@ -381,6 +404,7 @@ function updateModal() {
 
     //different scenes
     if (settings.currentContent == "timeline") {
+      TweenLite.staggerFrom("#timeline g", 1, { x: 1000, ease: Power1.easeOut }, 0.2);
       //go through array timeline
       timelineArray.forEach(addClickToYear);
 
@@ -399,7 +423,7 @@ function updateModal() {
       //fetchSVGToContentBamboo("theBamboo.svg");
     } else if (settings.currentContent == "process-intro") {
       modal_content.classList.remove("timeline-grid");
-      fetchBambooSVG();
+      //   fetchBambooSVG();
     } else if (settings.currentContent == "technology") {
       fetchPowerPlant();
     } else if (settings.currentContent == "work-impact") {
@@ -414,6 +438,13 @@ function addClickToYear(yearObject) {
   //select the button for the object
   document.getElementById(`${yearObject.yearID}`).addEventListener("click", () => {
     console.log("button Clicked");
+    // if (document.querySelector(`.content .timeline-text`)) {
+
+    //   TweenMax.to(".content .timeline-text", 0.5, { opacity: 0 });
+    //   TweenMax.to(".content .timeline-image", 0.3, { opacity: 0 });
+    //   TweenMax.to(".content .timeline-text", 0.3, { opacity: 0, delay: 0.5 });
+    //   TweenMax.to(".content .timeline-image", 0.5, { opacity: 0, delay: 0.5 });
+    // }
     changeTimelineContent(yearObject);
   });
 }
@@ -448,6 +479,9 @@ function changeTimelineContent(timelineYear) {
   modal_content.innerHTML = "";
   modal_content.appendChild(templateCopy);
 
+  gsap.fromTo(".content .timeline-text", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 10, duration: 0.5 });
+  gsap.fromTo(".content .timeline-image", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 10, duration: 1, delay: 0.5 });
+
   timelineArray.forEach(addClickToYear);
 }
 
@@ -462,11 +496,21 @@ function updateTimelinePage(contentToUpdate) {
 
 function addClickNext() {
   const nextBTN = document.querySelector(".next");
-  const restartBTN = document.querySelector(".restart");
 
-  nextBTN.addEventListener("click", () => {
+  nextBTN.addEventListener("click", btn => {
     contentCurrentIndex++;
-    updateStatus();
+    updateStatus(btn.target.className);
+    updateModal();
+  });
+}
+
+function addClickPrevious() {
+  const previousBTN = document.querySelector(".back");
+
+  previousBTN.addEventListener("click", btn => {
+    console.log(btn.target.className);
+    contentCurrentIndex--;
+    updateStatus(btn.target.className);
     updateModal();
   });
 }

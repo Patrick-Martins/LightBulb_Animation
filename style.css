@@ -26,7 +26,7 @@ html {
 
 p {
   font-family: Georgia, Times, "Times New Roman", serif;
-  font-size: 3vw;
+  font-size: 2vw;
   max-width: 80%;
   margin: auto;
 }
@@ -43,8 +43,9 @@ h2 {
   grid-template-areas:
     "timelineSVG timelineSVG"
     "timelineText timelineImage";
-  grid-template-columns: 1fr 1fr;
-  grid-gap: 10%;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 10% 90%;
+  grid-gap: 5px;
   width: 90%;
   height: 80%;
   margin: auto;
@@ -135,6 +136,7 @@ svg#house {
   max-height: 50vh;
   display: block;
   margin: auto;
+  max-height: 50vh;
 }
 
 .modal-bg {
@@ -170,7 +172,9 @@ svg#house {
   box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
   display: block;
   border-radius: 50em;
-  position: relative;
+  position: absolute;
+  top: 4%;
+  left: 4%;
   text-align: center;
   width: max-content;
   margin: 10px;
@@ -187,7 +191,8 @@ svg#house {
   margin: 0;
 }
 
-.next {
+.next,
+.back {
   font-size: 25px;
   font-weight: bold;
   color: #fff200;
@@ -204,13 +209,22 @@ svg#house {
   margin-top: auto;
 }
 
-/* .power-plant {
-  width: 50%;
-  margin: auto;
-  margin-top: 2vh;
+.next {
+  position: fixed;
+  bottom: 4%;
+  right: 4%;
+}
+.back {
+  position: fixed;
+  bottom: 4%;
+  left: 4%;
 }
 
-.factory-bank {
-  width: 45%;
-  margin: auto;
-} */
+.content {
+  height: 90%;
+  width: 100%;
+}
+
+.content .timeline-image svg {
+  height: 100%;
+}

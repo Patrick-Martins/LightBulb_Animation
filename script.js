@@ -246,6 +246,7 @@ function updateModal() {
 
     //different scenes
     if (settings.currentContent == "timeline") {
+      TweenLite.staggerFrom("#timeline g", 1, { x: 1000, ease: Power1.easeOut }, 0.2);
       //go through array timeline
       timelineArray.forEach(addClickToYear);
 
@@ -272,6 +273,13 @@ function addClickToYear(yearObject) {
   //select the button for the object
   document.getElementById(`${yearObject.yearID}`).addEventListener("click", () => {
     console.log("button Clicked");
+    // if (document.querySelector(`.content .timeline-text`)) {
+
+    //   TweenMax.to(".content .timeline-text", 0.5, { opacity: 0 });
+    //   TweenMax.to(".content .timeline-image", 0.3, { opacity: 0 });
+    //   TweenMax.to(".content .timeline-text", 0.3, { opacity: 0, delay: 0.5 });
+    //   TweenMax.to(".content .timeline-image", 0.5, { opacity: 0, delay: 0.5 });
+    // }
     changeTimelineContent(yearObject);
   });
 }
@@ -305,6 +313,9 @@ function changeTimelineContent(timelineYear) {
   const modal_content = document.querySelector(".content");
   modal_content.innerHTML = "";
   modal_content.appendChild(templateCopy);
+
+  gsap.fromTo(".content .timeline-text", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 10, duration: 0.5 });
+  gsap.fromTo(".content .timeline-image", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 10, duration: 1, delay: 0.5 });
 
   timelineArray.forEach(addClickToYear);
 }

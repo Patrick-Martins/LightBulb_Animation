@@ -4,8 +4,11 @@ import { TweenMax } from "gsap/all";
 import { TimelineMax } from "gsap/all";
 import { Power1 } from "gsap/all";
 import { Bounce } from "gsap/all";
+import { _createElement } from "gsap/CSSPlugin";
 
 ("use strict");
+
+let eventListenerTimeline = false;
 
 window.addEventListener("DOMContentLoaded", init);
 let contentArray = [];
@@ -18,11 +21,11 @@ const settings = {
   currentContent: ""
 };
 
-function init() {
+async function init() {
   fetchSVG();
   //changeViewBox();
-  fetchTimeline();
   fetchAllImages();
+  fetchTimeline();
   //   fetchTimeline();
   // fetchGameSVG();
   fetchContentJSON();
@@ -117,7 +120,7 @@ function turnOnTheSpeaker() {
 }
 
 function fetchAllImages() {
-  fetchImage("timeline.svg", ".timeline");
+  fetchImage("timeline.svg", ".timeline ");
   //   fetchImage("content_images/house_fire.svg", ".lifestyle-impact");
   fetchImage("content_images/house.svg", ".lifestyle-impact");
 }
@@ -219,10 +222,23 @@ function updateModal() {
     document.querySelector("#edison-lamp").classList.add("hidden");
     document.querySelector("#laptop").classList.remove("hidden");
     document.querySelector("#iphone").classList.remove("hidden");
-  } else if (settings.currentContent == "timeline") {
-    //go through array timeline
-    timelineArray.forEach(addClickToYear);
   } else {
+    //change content of modal by appending a template with class of settings.currentContent
+    const template = document.querySelector(`.${settings.currentContent}`).content;
+    const templateCopy = template.cloneNode(true);
+    console.log(templateCopy);
+    const modal_content = document.querySelector(".content");
+    modal_content.innerHTML = "";
+    modal_content.appendChild(templateCopy);
+
+    //different scenes
+    if (settings.currentContent == "timeline" && eventListenerTimeline === false) {
+      //go through array timeline
+      timelineArray.forEach(addClickToYear);
+      eventListenerTimeline = true;
+    }
+    ///////////////////////////////////////////////
+
     if (settings.currentContent == "filament-game") {
       fetchGameSVG();
     } else if (settings.currentContent == "process-conclusion") {
@@ -231,24 +247,53 @@ function updateModal() {
     } else if (settings.currentContent == "congratulations-message") {
       fetchBambooSVG();
     }
-    //change content of modal by appending a template with class of settings.currentContent
-    const template = document.querySelector(`.${settings.currentContent}`).content;
-    const templateCopy = template.cloneNode(true);
-    console.log(templateCopy);
-    const modal_content = document.querySelector(".content");
-    modal_content.innerHTML = "";
-    modal_content.appendChild(templateCopy);
   }
 }
 
 function addClickToYear(yearObject) {
   //select the button for the object
-  /////document.getElementById(yearObject.yearID).addEventListener("click", changeTimelineContent(yearObject));
+  document.getElementById(`${yearObject.yearID}`).addEventListener("click", () => {
+    console.log("button Clicked");
+    changeTimelineContent(yearObject);
+  });
 }
 
 function changeTimelineContent(timelineYear) {
-  //change text of timeline-text
+  console.log("change modal");
+  const templateTimeline = document.querySelector("template.timeline").content;
+  const templateCopy = templateTimeline.cloneNode(true);
+
+  console.log("CLONE");
+  console.log(templateCopy);
+
+  //   change text of timeline-text
+
+  const timelineText = templateCopy.querySelector(".timeline-text p");
+  timelineText.textContent = timelineYear.text;
+
+  console.log("year" + timelineYear.yearID);
   //change timeline-image
+
+  //   const imageCreated = document.createElement("p");
+
+  const timelineImage = templateCopy.querySelector(".timeline-image p");
+  timelineImage.textContent = timelineYear.image;
+
+  console.log(templateCopy);
+  const modal_content = document.querySelector(".content");
+  modal_content.innerHTML = "";
+  modal_content.appendChild(templateCopy);
+
+  timelineArray.forEach(addClickToYear);
+}
+
+function updateTimelinePage(contentToUpdate) {
+  const modal_content = document.querySelector(".content");
+  modal_content.innerHTML = "";
+  //   modal_content.appendChild(contentToUpdate);
+
+  modal_content.appendChild(timelineImage);
+  modal_content.appendChild(timelineText);
 }
 
 function addClickNext() {

@@ -162,6 +162,13 @@ async function fetchMaterialsSVG() {
   animateMaterials();
 }
 
+async function fetchPowerPlant() {
+  let response = await fetch("power-plant.svg");
+  let mySVGData = await response.text();
+  document.querySelector("section.power-plant").innerHTML += mySVGData;
+  animatePowerPlant();
+}
+
 async function fetchBambooSVG() {
   let response = await fetch("theBamboo.svg");
   let mySVGData = await response.text();
@@ -246,6 +253,8 @@ function updateModal() {
       fetchMaterialsSVG();
     } else if (settings.currentContent == "congratulations-message") {
       fetchBambooSVG();
+    } else if (settings.currentContent == "technology") {
+      fetchPowerPlant();
     }
   }
 }

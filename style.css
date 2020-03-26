@@ -82,6 +82,10 @@ svg#bubble {
 svg#theBamboo {
   width: 30%;
 }
+
+svg#power-plant {
+  width: 30%;
+}
 .content svg {
   max-width: 80%;
   display: block;

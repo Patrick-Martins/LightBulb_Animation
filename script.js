@@ -162,6 +162,13 @@ async function fetchMaterialsSVG() {
   animateMaterials();
 }
 
+async function fetchFactory() {
+  let response = await fetch("factory-bank.svg");
+  let mySVGData = await response.text();
+  document.querySelector("section.factory-bank").innerHTML += mySVGData;
+  animateFactory();
+}
+
 async function fetchPowerPlant() {
   let response = await fetch("power-plant.svg");
   let mySVGData = await response.text();
@@ -259,6 +266,8 @@ function updateModal() {
       fetchBambooSVG();
     } else if (settings.currentContent == "technology") {
       fetchPowerPlant();
+    } else if (settings.currentContent == "work-impact") {
+      fetchFactory();
     }
   }
 }

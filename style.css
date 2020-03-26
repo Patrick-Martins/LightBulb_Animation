@@ -72,6 +72,13 @@ svg#timeline {
   margin: auto;
 }
 
+.lamp,
+.bubbles,
+.process-lamp {
+  width: 100%;
+  max-height: 50vh;
+}
+
 /*Hides the light of the lamp*/
 #light-standlamp {
   display: none;
@@ -121,6 +128,10 @@ svg#house {
 
 svg#power-plant {
   width: 30%;
+}
+
+.process-lamp #lamp {
+  height: 50vh;
 }
 
 .content svg {

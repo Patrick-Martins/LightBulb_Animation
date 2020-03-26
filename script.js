@@ -258,6 +258,29 @@ async function fetchBambooSVG() {
   document.querySelector(".content").innerHTML += mySVGData;
   animateBamboo();
 }
+async function fetchLamp() {
+  let response = await fetch("edisons-first-lamp-process.svg");
+  let mySVGData = await response.text();
+  document.querySelector("section.process-lamp").innerHTML += mySVGData;
+  animateLamp();
+}
+
+function animateLamp() {
+  const filament = document.querySelector(".filament");
+  const glass = document.querySelector(".glass-lit");
+  TweenLite.from(glass, 2, {
+    opacity: 0,
+    yoyo: true,
+    repeat: -1,
+    ease: Power1.easeOut
+  }, 0.2);
+  TweenLite.from(filament, 2, {
+    stroke: "black",
+    yoyo: true,
+    repeat: -1,
+    ease: Power1.easeOut
+  }, 0.2);
+}
 
 async function fetchSVGToContentBamboo(imagePath) {
   let response = await fetch(imagePath);
@@ -380,6 +403,8 @@ function updateModal() {
       fetchPowerPlant();
     } else if (settings.currentContent == "work-impact") {
       fetchFactory();
+    } else if (settings.currentContent == "process-curiosity") {
+      fetchLamp();
     }
   }
 }

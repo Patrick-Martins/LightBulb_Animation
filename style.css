@@ -108,10 +108,16 @@ svg#theBamboo {
   width: 30%;
 }
 
+<<<<<<< HEAD
 svg#house {
   width: 30%;
 }
 
+=======
+svg#power-plant {
+  width: 30%;
+}
+>>>>>>> vikisBranch
 .content svg {
   max-width: 80%;
   display: block;

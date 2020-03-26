@@ -169,6 +169,10 @@ async function fetchPowerPlant() {
   animatePowerPlant();
 }
 
+function animatePowerPlant() {
+  const smoke = document.querySelector("#power-plant");
+}
+
 async function fetchBambooSVG() {
   let response = await fetch("theBamboo.svg");
   let mySVGData = await response.text();

@@ -36,6 +36,31 @@ h2 {
   margin: auto;
 }
 
+.timeline-grid {
+  display: grid;
+  grid-template-areas:
+    "timelineSVG timelineSVG"
+    "timelineText timelineImage";
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 10%;
+  width: 90%;
+  height: 80%;
+  margin: auto;
+  align-items: center;
+}
+
+.timeline-text {
+  grid-area: timelineText;
+}
+
+.timeline-image {
+  grid-area: timelineImage;
+}
+
+svg#timeline {
+  grid-area: timelineSVG;
+}
+
 .gameContainer {
   display: grid;
   position: relative;

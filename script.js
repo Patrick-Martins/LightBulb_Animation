@@ -169,11 +169,17 @@ async function fetchBambooSVG() {
   animateBamboo();
 }
 
-async function fetchSVGToContent(imagePath) {
+async function fetchSVGToContentBamboo(imagePath) {
   let response = await fetch(imagePath);
   let mySVGData = await response.text();
   document.querySelector(".content").innerHTML += mySVGData;
   animateBamboo();
+}
+
+async function fetchSVGToContentTimeline(imagePath) {
+  let response = await fetch(imagePath);
+  let mySVGData = await response.text();
+  document.querySelector(".timeline-image").innerHTML = mySVGData;
 }
 
 function animateBamboo() {
@@ -239,10 +245,12 @@ function updateModal() {
     modal_content.appendChild(templateCopy);
 
     //different scenes
-    if (settings.currentContent == "timeline" && eventListenerTimeline === false) {
+    if (settings.currentContent == "timeline") {
       //go through array timeline
       timelineArray.forEach(addClickToYear);
-      eventListenerTimeline = true;
+
+      //add class to content container thats called timeline and remove previous
+      modal_content.classList.add("timeline-grid");
     }
     ///////////////////////////////////////////////
 
@@ -253,7 +261,9 @@ function updateModal() {
       fetchMaterialsSVG();
     } else if (settings.currentContent == "congratulations-message") {
       //   fetchBambooSVG();
-      fetchSVGToContent("theBamboo.svg");
+      fetchSVGToContentBamboo("theBamboo.svg");
+    } else if (settings.currentContent == "process-intro") {
+      modal_content.classList.remove("timeline-grid");
     }
   }
 }
@@ -281,11 +291,15 @@ function changeTimelineContent(timelineYear) {
 
   console.log("year" + timelineYear.yearID);
   //change timeline-image
+  if (timelineYear.image) {
+    //   const imageCreated = document.createElement("p");
+    fetchSVGToContentTimeline(timelineYear.image, ".timeline-image");
 
-  //   const imageCreated = document.createElement("p");
+    const timelineImage = templateCopy.querySelector(".timeline-image");
+    // timelineImage.textContent = timelineYear.image;
 
-  const timelineImage = templateCopy.querySelector(".timeline-image p");
-  timelineImage.textContent = timelineYear.image;
+    timelineImage.style.width = "100px";
+  }
 
   console.log(templateCopy);
   const modal_content = document.querySelector(".content");

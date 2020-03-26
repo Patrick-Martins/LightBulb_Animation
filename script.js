@@ -1,24 +1,9 @@
-import {
-  gsap
-} from "gsap";
-import {
-  TweenLite
-} from "gsap/all";
-import {
-  TweenMax
-} from "gsap/all";
-import {
-  TimelineMax
-} from "gsap/all";
-import {
-  Power1
-} from "gsap/all";
-import {
-  Bounce
-} from "gsap/all";
-import {
-  _createElement
-} from "gsap/CSSPlugin";
+import { gsap } from "gsap";
+import { TweenLite } from "gsap/all";
+import { TweenMax } from "gsap/all";
+import { Power1 } from "gsap/all";
+import { Bounce } from "gsap/all";
+import { _createElement } from "gsap/CSSPlugin";
 
 ("use strict");
 
@@ -248,10 +233,6 @@ async function fetchPowerPlant() {
   animatePowerPlant();
 }
 
-function animatePowerPlant() {
-  const smoke = document.querySelector("#power-plant");
-}
-
 async function fetchBambooSVG() {
   let response = await fetch("theBamboo.svg");
   let mySVGData = await response.text();
@@ -268,18 +249,28 @@ async function fetchLamp() {
 function animateLamp() {
   const filament = document.querySelector(".filament");
   const glass = document.querySelector(".glass-lit");
-  TweenLite.from(glass, 2, {
-    opacity: 0,
-    yoyo: true,
-    repeat: -1,
-    ease: Power1.easeOut
-  }, 0.2);
-  TweenLite.from(filament, 2, {
-    stroke: "black",
-    yoyo: true,
-    repeat: -1,
-    ease: Power1.easeOut
-  }, 0.2);
+  TweenLite.from(
+    glass,
+    2,
+    {
+      opacity: 0,
+      yoyo: true,
+      repeat: -1,
+      ease: Power1.easeOut
+    },
+    0.2
+  );
+  TweenLite.from(
+    filament,
+    2,
+    {
+      stroke: "black",
+      yoyo: true,
+      repeat: -1,
+      ease: Power1.easeOut
+    },
+    0.2
+  );
 }
 
 async function fetchSVGToContentBamboo(imagePath) {
@@ -299,11 +290,16 @@ function animateBamboo() {
   const bamboo = document.querySelector("#theBamboo");
   console.log(bamboo);
 
-  TweenLite.from(bamboo, 2, {
-    scale: 0,
-    opacity: 0,
-    ease: Power1.easeOut
-  }, 0.2);
+  TweenLite.from(
+    bamboo,
+    2,
+    {
+      scale: 0,
+      opacity: 0,
+      ease: Power1.easeOut
+    },
+    0.2
+  );
   TweenLite.from(bamboo, 1.8, {
     y: -10,
     repeat: -1,
@@ -313,17 +309,22 @@ function animateBamboo() {
 }
 
 function animateMaterials() {
-  TweenLite.staggerFrom(".material", 2, {
-    scale: 0,
-    opacity: 0,
-    ease: Bounce.easeOut
-  }, 0.2);
+  TweenLite.staggerFrom(
+    ".material",
+    2,
+    {
+      scale: 0,
+      opacity: 0,
+      ease: Bounce.easeOut
+    },
+    0.2
+  );
 }
 
 function clickBook() {
   const openBook = document.getElementById("open-book");
   const modalBg = document.querySelector(".modal-bg");
-  openBook.addEventListener("click", function () {
+  openBook.addEventListener("click", function() {
     modalBg.classList.remove("hidden");
     console.log("openModal");
     updateStatus();
@@ -533,11 +534,61 @@ function checkMaterial() {
       yoyo: true,
       ease: Power1.linear
     });
-    TweenLite.to(lamp, 0.1, {
-      x: -5,
-      ease: Power1.linear
-    }, 0.2);
+    TweenLite.to(
+      lamp,
+      0.1,
+      {
+        x: -5,
+        ease: Power1.linear
+      },
+      0.2
+    );
 
     console.log("Wrong!");
   }
+}
+
+function animatePowerPlant() {
+  const smoke = document.getElementById("smoke-1");
+  TweenMax.to(smoke, 0.5, {
+    x: "+=10",
+    y: "+4",
+    yoyo: true,
+    repeat: -1
+  });
+  TweenMax.to(smoke, 0.5, {
+    x: "-=10",
+    y: "-4",
+    yoyo: true,
+    repeat: -1
+  });
+  const element = document.getElementById("smoke-2");
+  TweenMax.to(element, 0.4, {
+    x: "+=20",
+    y: "+2",
+    yoyo: true,
+    repeat: -1
+  });
+  TweenMax.to(element, 0.4, {
+    x: "-=20",
+    y: "-2",
+    yoyo: true,
+    repeat: -1
+  });
+}
+
+function animateFactory() {
+  const element = document.getElementById("factory-smoke");
+  TweenMax.to(element, 0.5, {
+    x: "+=10",
+    y: "+4",
+    yoyo: true,
+    repeat: -1
+  });
+  TweenMax.to(element, 0.5, {
+    x: "-=2",
+    y: "-4",
+    yoyo: true,
+    repeat: -1
+  });
 }

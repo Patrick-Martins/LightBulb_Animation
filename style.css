@@ -126,23 +126,13 @@ svg#house {
   width: 30%;
 }
 
-svg#power-plant {
-  width: 30%;
-}
-
-.work-impact-container,
-.lifestyle-container,
-.technology-container {
-  width: 100%;
-  max-height: 50vh;
-}
-
 .process-lamp #lamp {
   height: 50vh;
 }
 
 .content svg {
   max-width: 80%;
+  max-height: 50vh;
   display: block;
   margin: auto;
 }
@@ -213,3 +203,14 @@ svg#power-plant {
   align-self: flex-end;
   margin-top: auto;
 }
+
+/* .power-plant {
+  width: 50%;
+  margin: auto;
+  margin-top: 2vh;
+}
+
+.factory-bank {
+  width: 45%;
+  margin: auto;
+} */

@@ -11,29 +11,33 @@
   },
   {
     "yearID": "year1840",
-    "text": " In 1840, British scientist Warren de la Rue developed an efficiently designed light bulb using a coiled platinum filament instead of copper."
+    "text": " In 1840, British scientist Warren de la Rue developed an efficiently designed light bulb using a coiled platinum filament instead of copper.",
+    "image": "warren.svg"
   },
   {
     "yearID": "year1848",
-    "text": " In 1848, Englishman William Staite improved the duration of conventional arc lamps by developing a clockwork mechanism that regulates the movement of the lamps. "
+    "text": " In 1848, Englishman William Staite improved the duration of conventional arc lamps by developing a clockwork mechanism that regulates the movement of the lamps. ",
+    "image": "staite.svg"
   },
   {
     "yearID": "year1850",
-    "image": " swan-light-bulb.svg",
+    "image": "swan-light-bulb.svg",
     "text": " In 1850, English chemist Joseph Swan tackled the cost-effectiveness problem of previous inventors."
   },
   {
     "yearID": "year1860",
-    "text": " 1860 Joseph Swan had developed a light bulb that used carbonized paper filaments instead of ones made of platinum."
+    "text": " 1860 Joseph Swan had developed a light bulb that used carbonized paper filaments instead of ones made of platinum.",
+    "image": "platinum-money.svg"
   },
   {
     "yearID": "year1878",
-    "text": " 1878 Joseph Swan received a patent in the United Kingdom."
+    "text": " 1878 Joseph Swan received a patent in the United Kingdom.",
+    "image": "patent.svg"
   },
   {
     "yearID": "year1879",
-    "text": " In September of 1879 Joseph Swan demonstrated a working lamp in a lecture in Newcastle.",
-    "text2": " In December of 1879 Thomas Edison demonstrated his light bulb with better modifications to Swan’s model that included a different filament."
+    "text": " In September of 1879 Joseph Swan demonstrated a working lamp in a lecture in Newcastle. <br>In December of 1879 Thomas Edison demonstrated his light bulb with better modifications to Swan’s model that included a different filament.",
+    "image": "swan-light2.svg"
   },
   {
     "yearID": "year1880",

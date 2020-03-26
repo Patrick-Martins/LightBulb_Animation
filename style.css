@@ -45,7 +45,7 @@ h2 {
     "timelineText timelineImage";
   grid-template-columns: 70% 30%;
   grid-template-rows: 10% 90%;
-  grid-gap: 10%;
+  grid-gap: 5px;
   width: 90%;
   height: 80%;
   margin: auto;
@@ -175,7 +175,9 @@ svg#power-plant {
   box-shadow: 0em -0.3rem 0em rgba(0, 0, 0, 0.1) inset;
   display: block;
   border-radius: 50em;
-  position: relative;
+  position: absolute;
+  top: 4%;
+  left: 4%;
   text-align: center;
   width: max-content;
   margin: 10px;
@@ -192,7 +194,8 @@ svg#power-plant {
   margin: 0;
 }
 
-.next {
+.next,
+.back {
   font-size: 25px;
   font-weight: bold;
   color: #fff200;
@@ -209,7 +212,22 @@ svg#power-plant {
   margin-top: auto;
 }
 
+.next {
+  position: fixed;
+  bottom: 4%;
+  right: 4%;
+}
+.back {
+  position: fixed;
+  bottom: 4%;
+  left: 4%;
+}
+
 .content {
   height: 90%;
   width: 100%;
+}
+
+.content .timeline-image svg {
+  height: 100%;
 }

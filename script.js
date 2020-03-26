@@ -30,6 +30,7 @@ async function init() {
   // fetchGameSVG();
   fetchContentJSON();
   addClickNext();
+  addClickPrevious();
 }
 
 async function fetchSVG() {
@@ -329,10 +330,10 @@ function animateMaterials() {
 function clickBook() {
   const openBook = document.getElementById("open-book");
   const modalBg = document.querySelector(".modal-bg");
-  openBook.addEventListener("click", function() {
+  openBook.addEventListener("click", function(btn) {
     modalBg.classList.remove("hidden");
     console.log("openModal");
-    updateStatus();
+    updateStatus(btn.target.className);
     updateModal();
   });
 }
@@ -348,10 +349,17 @@ function saveData(content) {
   contentArray = content;
 }
 
-function updateStatus() {
-  //update status in settings object
-  settings.currentContent = contentArray[contentCurrentIndex].context;
-  console.log(settings.currentContent);
+function updateStatus(btnClass) {
+  //   console.log(btn.target);
+  if (btnClass === "back" && contentCurrentIndex === -1) {
+    //closeModal
+    document.querySelector(".modal-bg").classList.add("hidden");
+    contentCurrentIndex = 0;
+  } else {
+    //update status in settings object
+    settings.currentContent = contentArray[contentCurrentIndex].context;
+    console.log(settings.currentContent);
+  }
 }
 
 function updateModal() {
@@ -375,6 +383,18 @@ function updateModal() {
     document.querySelector("#edison-lamp").classList.add("hidden");
     document.querySelector("#laptop").classList.remove("hidden");
     document.querySelector("#iphone").classList.remove("hidden");
+
+    //create restart button and add inner html and give class restart
+    const newRestartButton = document.createElement("div");
+    newRestartButton.innerHTML = "&#8634";
+    newRestartButton.classList.add("restart");
+
+    //append button to body
+    document.querySelector("body").appendChild(newRestartButton);
+
+    newRestartButton.addEventListener("click", () => {
+      history.go(0);
+    });
   } else {
     //change content of modal by appending a template with class of settings.currentContent
     const template = document.querySelector(`.${settings.currentContent}`).content;
@@ -478,11 +498,21 @@ function updateTimelinePage(contentToUpdate) {
 
 function addClickNext() {
   const nextBTN = document.querySelector(".next");
-  const restartBTN = document.querySelector(".restart");
 
-  nextBTN.addEventListener("click", () => {
+  nextBTN.addEventListener("click", btn => {
     contentCurrentIndex++;
-    updateStatus();
+    updateStatus(btn.target.className);
+    updateModal();
+  });
+}
+
+function addClickPrevious() {
+  const previousBTN = document.querySelector(".back");
+
+  previousBTN.addEventListener("click", btn => {
+    console.log(btn.target.className);
+    contentCurrentIndex--;
+    updateStatus(btn.target.className);
     updateModal();
   });
 }

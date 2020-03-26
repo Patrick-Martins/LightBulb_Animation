@@ -169,6 +169,13 @@ async function fetchBambooSVG() {
   animateBamboo();
 }
 
+async function fetchSVGToContent(imagePath) {
+  let response = await fetch(imagePath);
+  let mySVGData = await response.text();
+  document.querySelector(".content").innerHTML += mySVGData;
+  animateBamboo();
+}
+
 function animateBamboo() {
   const bamboo = document.querySelector("#theBamboo");
   console.log(bamboo);
@@ -245,7 +252,8 @@ function updateModal() {
       console.log("hi");
       fetchMaterialsSVG();
     } else if (settings.currentContent == "congratulations-message") {
-      fetchBambooSVG();
+      //   fetchBambooSVG();
+      fetchSVGToContent("theBamboo.svg");
     }
   }
 }

@@ -43,7 +43,8 @@ h2 {
   grid-template-areas:
     "timelineSVG timelineSVG"
     "timelineText timelineImage";
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 70% 30%;
+  grid-template-rows: 10% 90%;
   grid-gap: 10%;
   width: 90%;
   height: 80%;

@@ -1,10 +1,24 @@
-import { gsap } from "gsap";
-import { TweenLite } from "gsap/all";
-import { TweenMax } from "gsap/all";
-import { TimelineMax } from "gsap/all";
-import { Power1 } from "gsap/all";
-import { Bounce } from "gsap/all";
-import { _createElement } from "gsap/CSSPlugin";
+import {
+  gsap
+} from "gsap";
+import {
+  TweenLite
+} from "gsap/all";
+import {
+  TweenMax
+} from "gsap/all";
+import {
+  TimelineMax
+} from "gsap/all";
+import {
+  Power1
+} from "gsap/all";
+import {
+  Bounce
+} from "gsap/all";
+import {
+  _createElement
+} from "gsap/CSSPlugin";
 
 ("use strict");
 
@@ -70,8 +84,16 @@ function lightOn() {
 
 function turnOnTheWM() {
   var element = document.getElementById("washing-machine-glass");
-  TweenMax.to(element, 0.1, { x: "+=2", yoyo: true, repeat: -1 });
-  TweenMax.to(element, 0.1, { x: "-=2", yoyo: true, repeat: -1 });
+  TweenMax.to(element, 0.1, {
+    x: "+=2",
+    yoyo: true,
+    repeat: -1
+  });
+  TweenMax.to(element, 0.1, {
+    x: "-=2",
+    yoyo: true,
+    repeat: -1
+  });
 }
 
 /************************* TV ANIMATION *********************************************************/
@@ -97,24 +119,74 @@ function turnOnTheTV() {
 
 function turnOnTheSpeaker() {
   var element = document.getElementById("big-notes");
-  TweenMax.to(element, 0.2, { x: "+=1", y: "+2", yoyo: true, repeat: -1 });
-  TweenMax.to(element, 0.2, { x: "-=1", y: "-2", yoyo: true, repeat: -1 });
+  TweenMax.to(element, 0.2, {
+    x: "+=1",
+    y: "+2",
+    yoyo: true,
+    repeat: -1
+  });
+  TweenMax.to(element, 0.2, {
+    x: "-=1",
+    y: "-2",
+    yoyo: true,
+    repeat: -1
+  });
 
   var element = document.getElementById("small-notes");
-  TweenMax.to(element, 0.2, { x: "+=1", y: "+2", yoyo: true, repeat: -1 });
-  TweenMax.to(element, 0.2, { x: "-=1", y: "-2", yoyo: true, repeat: -1 });
+  TweenMax.to(element, 0.2, {
+    x: "+=1",
+    y: "+2",
+    yoyo: true,
+    repeat: -1
+  });
+  TweenMax.to(element, 0.2, {
+    x: "-=1",
+    y: "-2",
+    yoyo: true,
+    repeat: -1
+  });
 
   var element = document.getElementById("sub-sound");
-  TweenMax.to(element, 0.1, { x: "+=1", y: "+2", yoyo: true, repeat: -1 });
-  TweenMax.to(element, 0.1, { x: "-=1", y: "-2", yoyo: true, repeat: -1 });
+  TweenMax.to(element, 0.1, {
+    x: "+=1",
+    y: "+2",
+    yoyo: true,
+    repeat: -1
+  });
+  TweenMax.to(element, 0.1, {
+    x: "-=1",
+    y: "-2",
+    yoyo: true,
+    repeat: -1
+  });
 
   var element = document.getElementById("big-sound");
-  TweenMax.to(element, 0.1, { x: "+=1", y: "+2", yoyo: true, repeat: -1 });
-  TweenMax.to(element, 0.1, { x: "-=1", y: "-2", yoyo: true, repeat: -1 });
+  TweenMax.to(element, 0.1, {
+    x: "+=1",
+    y: "+2",
+    yoyo: true,
+    repeat: -1
+  });
+  TweenMax.to(element, 0.1, {
+    x: "-=1",
+    y: "-2",
+    yoyo: true,
+    repeat: -1
+  });
 
   var element = document.getElementById("small-sound");
-  TweenMax.to(element, 0.1, { x: "+=1", y: "+2", yoyo: true, repeat: -1 });
-  TweenMax.to(element, 0.1, { x: "-=1", y: "-2", yoyo: true, repeat: -1 });
+  TweenMax.to(element, 0.1, {
+    x: "+=1",
+    y: "+2",
+    yoyo: true,
+    repeat: -1
+  });
+  TweenMax.to(element, 0.1, {
+    x: "-=1",
+    y: "-2",
+    yoyo: true,
+    repeat: -1
+  });
   document.getElementById("room").setAttribute("viewBox", "279 120 83 100");
   clickBook();
 }
@@ -204,16 +276,31 @@ function animateBamboo() {
   const bamboo = document.querySelector("#theBamboo");
   console.log(bamboo);
 
-  TweenLite.from(bamboo, 2, { scale: 0, opacity: 0, ease: Power1.easeOut }, 0.2);
-  TweenLite.from(bamboo, 1.8, { y: -10, repeat: -1, yoyo: true, ease: Power1.easeInOut });
+  TweenLite.from(bamboo, 2, {
+    scale: 0,
+    opacity: 0,
+    ease: Power1.easeOut
+  }, 0.2);
+  TweenLite.from(bamboo, 1.8, {
+    y: -10,
+    repeat: -1,
+    yoyo: true,
+    ease: Power1.easeInOut
+  });
 }
+
 function animateMaterials() {
-  TweenLite.staggerFrom(".material", 2, { scale: 0, opacity: 0, ease: Bounce.easeOut }, 0.2);
+  TweenLite.staggerFrom(".material", 2, {
+    scale: 0,
+    opacity: 0,
+    ease: Bounce.easeOut
+  }, 0.2);
 }
+
 function clickBook() {
   const openBook = document.getElementById("open-book");
   const modalBg = document.querySelector(".modal-bg");
-  openBook.addEventListener("click", function() {
+  openBook.addEventListener("click", function () {
     modalBg.classList.remove("hidden");
     console.log("openModal");
     updateStatus();
@@ -243,7 +330,13 @@ function updateModal() {
     document.querySelector(".modal-bg").classList.add("hidden");
     //animation zooming out
     //https://codepen.io/aarongarciah/pen/kkQGwg animates de viewbox to increase and show
-    TweenLite.to("#room", 2.5, { attr: { viewBox: "100 50 390 390" }, ease: Power1.easeInOut, delay: 1 });
+    TweenLite.to("#room", 2.5, {
+      attr: {
+        viewBox: "100 50 390 390"
+      },
+      ease: Power1.easeInOut,
+      delay: 1
+    });
     document.querySelector("#open-book").classList.add("hidden");
     document.querySelector("#pen").classList.add("hidden");
     document.querySelector("#key").classList.add("hidden");
@@ -278,18 +371,15 @@ function updateModal() {
       console.log("hi");
       fetchMaterialsSVG();
     } else if (settings.currentContent == "congratulations-message") {
-<<<<<<< HEAD
-      //   fetchBambooSVG();
-      fetchSVGToContentBamboo("theBamboo.svg");
+      fetchBambooSVG();
+      //fetchSVGToContentBamboo("theBamboo.svg");
     } else if (settings.currentContent == "process-intro") {
       modal_content.classList.remove("timeline-grid");
-=======
       fetchBambooSVG();
     } else if (settings.currentContent == "technology") {
       fetchPowerPlant();
     } else if (settings.currentContent == "work-impact") {
       fetchFactory();
->>>>>>> vikisBranch
     }
   }
 }
@@ -367,9 +457,16 @@ function random() {
   return num;
 }
 let delayed = 0;
+
 function animate(bubble) {
   console.log(delayed + " " + bubble.id);
-  TweenLite.from(bubble, 1.8, { y: -20, repeat: -1, yoyo: true, ease: Power1.easeInOut, delay: random() });
+  TweenLite.from(bubble, 1.8, {
+    y: -20,
+    repeat: -1,
+    yoyo: true,
+    ease: Power1.easeInOut,
+    delay: random()
+  });
 
   delayed += 0.2;
 
@@ -380,15 +477,18 @@ function animate(bubble) {
     console.log(clicked);
   });
 }
+
 function clearAll() {
   const bubbles = document.querySelectorAll(".bubble");
   bubbles.forEach(bubble => {
     bubble.querySelector(".st1").style.fill = "white";
   });
 }
+
 function editLamp() {
   document.querySelector("#lamp").addEventListener("click", checkMaterial);
 }
+
 function checkMaterial() {
   console.log("hola");
 
@@ -402,8 +502,16 @@ function checkMaterial() {
     document.querySelector(".Lampst55").style.stroke = "orange";
   } else {
     const lamp = document.querySelector("#lamp");
-    TweenLite.to(lamp, 0.1, { x: +5, repeat: 3, yoyo: true, ease: Power1.linear });
-    TweenLite.to(lamp, 0.1, { x: -5, ease: Power1.linear }, 0.2);
+    TweenLite.to(lamp, 0.1, {
+      x: +5,
+      repeat: 3,
+      yoyo: true,
+      ease: Power1.linear
+    });
+    TweenLite.to(lamp, 0.1, {
+      x: -5,
+      ease: Power1.linear
+    }, 0.2);
 
     console.log("Wrong!");
   }

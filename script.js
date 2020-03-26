@@ -4,6 +4,9 @@ import { TweenMax } from "gsap/all";
 import { TimelineMax } from "gsap/all";
 import { Power1 } from "gsap/all";
 import { Bounce } from "gsap/all";
+import { Power1 } from "gsap/all";
+import { Bounce } from "gsap/all";
+import { Elastic } from "gsap/all";
 import { _createElement } from "gsap/CSSPlugin";
 
 ("use strict");
@@ -41,7 +44,6 @@ async function fetchSVG() {
   turnOnTheWM();
   turnOnTheTV();
   turnOnTheSpeaker();
-
   document.getElementById("room").setAttribute("viewBox", "270 120 100 100");
 }
 /****************** STANDLAMP ANIMATION *******************************************************/
@@ -180,7 +182,14 @@ function turnOnTheSpeaker() {
 function fetchAllImages() {
   fetchImage("timeline.svg", ".timeline ");
   //   fetchImage("content_images/house_fire.svg", ".lifestyle-impact");
-  fetchImage("content_images/house.svg", ".lifestyle-impact");
+  // fetchImage("content_images/house-fire.svg", ".lifestyle-impact");
+}
+
+async function fetchHouse() {
+  let response = await fetch("house-fire.svg");
+  let mySVGData = await response.text();
+  document.querySelector("section.house").innerHTML += mySVGData;
+  animateFlames();
 }
 
 async function fetchTimeline() {
@@ -232,10 +241,6 @@ async function fetchPowerPlant() {
   let mySVGData = await response.text();
   document.querySelector("section.power-plant").innerHTML += mySVGData;
   animatePowerPlant();
-}
-
-function animatePowerPlant() {
-  const smoke = document.querySelector("#power-plant");
 }
 
 async function fetchBambooSVG() {
@@ -412,6 +417,8 @@ function updateModal() {
       fetchFactory();
     } else if (settings.currentContent == "process-curiosity") {
       fetchLamp();
+    } else if (settings.currentContent == "lifestyle-impact") {
+      fetchHouse();
     }
   }
 }
@@ -562,4 +569,63 @@ function checkMaterial() {
 
     console.log("Wrong!");
   }
+}
+
+function animatePowerPlant() {
+  const smoke = document.getElementById("smoke-1");
+  TweenMax.to(smoke, 0.5, {
+    x: "+=10",
+    y: "+4",
+    yoyo: true,
+    repeat: -1
+  });
+  TweenMax.to(smoke, 0.5, {
+    x: "-=10",
+    y: "-4",
+    yoyo: true,
+    repeat: -1
+  });
+  const element = document.getElementById("smoke-2");
+  TweenMax.to(element, 0.4, {
+    x: "+=20",
+    y: "+2",
+    yoyo: true,
+    repeat: -1
+  });
+  TweenMax.to(element, 0.4, {
+    x: "-=20",
+    y: "-2",
+    yoyo: true,
+    repeat: -1
+  });
+}
+
+function animateFactory() {
+  const element = document.getElementById("factory-smoke");
+  TweenMax.to(element, 0.5, {
+    x: "+=10",
+    y: "+4",
+    yoyo: true,
+    repeat: -1
+  });
+  TweenMax.to(element, 0.5, {
+    x: "-=2",
+    y: "-4",
+    yoyo: true,
+    repeat: -1
+  });
+  const arrows = document.getElementById("arrows");
+  TweenMax.to(arrows, 0.5, {
+    x: "+=4",
+    yoyo: true,
+    repeat: -1
+  });
+}
+
+/********************** HOUSE ON FIRE ANIMATION ***************************/
+
+function animateFlames() {
+  // const element = document.querySelector(".fire");
+  TweenMax.from(".fire", 1, { scaleY: 0, ease: Elastic.easeOut, delay: 1.5 });
+  TweenLite.to(".fire", 1, { scale: 1.1, repeat: -1, yoyo: true, ease: Power1.easeInOut, delay: 2.5 });
 }

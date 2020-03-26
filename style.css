@@ -127,16 +127,13 @@ svg#house {
   width: 30%;
 }
 
-svg#power-plant {
-  width: 30%;
-}
-
 .process-lamp #lamp {
   height: 50vh;
 }
 
 .content svg {
   max-width: 80%;
+  max-height: 50vh;
   display: block;
   margin: auto;
   max-height: 50vh;

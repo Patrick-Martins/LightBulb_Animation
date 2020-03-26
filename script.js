@@ -1,9 +1,6 @@
 import { gsap } from "gsap";
 import { TweenLite } from "gsap/all";
 import { TweenMax } from "gsap/all";
-import { TimelineMax } from "gsap/all";
-import { Power1 } from "gsap/all";
-import { Bounce } from "gsap/all";
 import { Power1 } from "gsap/all";
 import { Bounce } from "gsap/all";
 import { Elastic } from "gsap/all";

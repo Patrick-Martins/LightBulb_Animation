@@ -181,7 +181,7 @@ function turnOnTheSpeaker() {
 function fetchAllImages() {
   fetchImage("timeline.svg", ".timeline ");
   //   fetchImage("content_images/house_fire.svg", ".lifestyle-impact");
-  fetchImage("content_images/house.svg", ".lifestyle-impact");
+  // fetchImage("content_images/house.svg", ".lifestyle-impact");
 }
 
 async function fetchTimeline() {
@@ -226,6 +226,13 @@ async function fetchFactory() {
   let mySVGData = await response.text();
   document.querySelector("section.factory-bank").innerHTML += mySVGData;
   animateFactory();
+}
+
+async function fetchHouse() {
+  let response = await fetch("house-fire.svg");
+  let mySVGData = await response.text();
+  document.querySelector("section.house").innerHTML += mySVGData;
+  animateFlames();
 }
 
 async function fetchPowerPlant() {
@@ -428,6 +435,8 @@ function updateModal() {
       fetchFactory();
     } else if (settings.currentContent == "process-curiosity") {
       fetchLamp();
+    } else if (settings.currentContent == "lifestyle-impact") {
+      fetchHouse();
     }
   }
 }
@@ -633,4 +642,9 @@ function animateFactory() {
     yoyo: true,
     repeat: -1
   });
+}
+
+function animateFlames() {
+  TweenMax.from(".fire", 1, { scaleY: 0, ease: Elastic.easeOut, delay: 1.5 });
+  TweenLite.to(".fire", 1, { scale: 1.1, repeat: -1, yoyo: true, ease: Power1.easeInOut, delay: 2.5 });
 }

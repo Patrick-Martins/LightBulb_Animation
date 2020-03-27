@@ -241,6 +241,18 @@ async function fetchBambooSVG() {
   document.querySelector(".content").innerHTML += mySVGData;
   animateBamboo();
 }
+
+async function fetchTorchLampsSVG() {
+  let response = await fetch("first-page-modal.svg");
+  let mySVGData = await response.text();
+  document.querySelector(".content").innerHTML += mySVGData;
+}
+
+async function fetchBooksSVG() {
+  let response = await fetch("bigbooks.svg");
+  let mySVGData = await response.text();
+  document.querySelector(".content").innerHTML += mySVGData;
+}
 async function fetchLamp() {
   let response = await fetch("edisons-first-lamp-process.svg");
   let mySVGData = await response.text();
@@ -352,6 +364,11 @@ function updateStatus(btnClass) {
     document.querySelector(".modal-bg").classList.add("hidden");
     contentCurrentIndex = 0;
   } else {
+    if (btnClass === "back" && settings.currentContent == "timeline") {
+      //remove timeline grid if back button is clicked
+      const modal_content = document.querySelector(".content");
+      modal_content.classList.remove("timeline-grid");
+    }
     //update status in settings object
     settings.currentContent = contentArray[contentCurrentIndex].context;
     console.log(settings.currentContent);
@@ -420,14 +437,17 @@ function updateModal() {
       fetchBambooSVG();
       //fetchSVGToContentBamboo("theBamboo.svg");
     } else if (settings.currentContent == "process-intro") {
+      //remove prevous scene class to .content
       modal_content.classList.remove("timeline-grid");
-      //   fetchBambooSVG();
+      fetchBooksSVG();
     } else if (settings.currentContent == "technology") {
       fetchPowerPlant();
     } else if (settings.currentContent == "work-impact") {
       fetchFactory();
     } else if (settings.currentContent == "process-curiosity") {
       fetchLamp();
+    } else if (settings.currentContent == "timeline-intro") {
+      fetchTorchLampsSVG();
     }
   }
 }

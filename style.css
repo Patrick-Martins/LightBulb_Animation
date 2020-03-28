@@ -134,6 +134,10 @@ svg#house {
   width: 30%;
 }
 
+#first_page {
+  margin-top: 30px;
+}
+
 .process-lamp #lamp {
   height: 50vh;
 }
@@ -227,6 +231,17 @@ svg#house {
   left: 4%;
 }
 
+.finalMessage {
+  display: block;
+  position: fixed;
+  bottom: 10%;
+  color: burlywood;
+  font-size: 2vw;
+  width: 100vw;
+  padding: 20px;
+  background-color: black;
+}
+
 .content {
   height: 90%;
   width: 100%;
@@ -234,4 +249,22 @@ svg#house {
 
 .content .timeline-image svg {
   height: 100%;
+}
+
+.instructions {
+  margin-top: 30px;
+}
+
+.win-message {
+  display: block;
+  position: absolute;
+  width: 50%;
+  padding: 20px;
+  text-align: center;
+  font-size: 4vw;
+  top: 40%;
+  left: 25%;
+  color: burlywood;
+  background-color: black;
+  border-radius: 50px;
 }

@@ -23,11 +23,8 @@ const settings = {
 
 async function init() {
   fetchSVG();
-  //changeViewBox();
-  fetchAllImages();
-  fetchTimeline();
-  //   fetchTimeline();
-  // fetchGameSVG();
+  fetchTimelineImage();
+  fetchTimelineJSON();
   fetchContentJSON();
   addClickNext();
   addClickPrevious();
@@ -178,13 +175,11 @@ function turnOnTheSpeaker() {
   clickBook();
 }
 
-function fetchAllImages() {
+function fetchTimelineImage() {
   fetchImage("timeline.svg", ".timeline ");
-  //   fetchImage("content_images/house_fire.svg", ".lifestyle-impact");
-  // fetchImage("content_images/house.svg", ".lifestyle-impact");
 }
 
-async function fetchTimeline() {
+async function fetchTimelineJSON() {
   fetch("timeline.json")
     .then(response => response.json())
     .then(saveTimelineData);
@@ -229,7 +224,7 @@ async function fetchFactory() {
 }
 
 async function fetchHouse() {
-  let response = await fetch("house-fire.svg");
+  let response = await fetch("house_fire.svg");
   let mySVGData = await response.text();
   document.querySelector("section.house").innerHTML += mySVGData;
   animateFlames();
@@ -385,6 +380,7 @@ function updateStatus(btnClass) {
 }
 
 function updateModal() {
+  //if it is in the last scene it should animate the viewbox and show computer and phone
   if (settings.currentContent == "last-scene") {
     document.querySelector(".modal-bg").classList.add("hidden");
     //animation zooming out
@@ -411,8 +407,17 @@ function updateModal() {
     newRestartButton.innerHTML = "&#8634";
     newRestartButton.classList.add("restart");
 
-    //append button to body
+    //create text and add inner html and give class restart
+    const finalMessage = document.createElement("h2");
+    finalMessage.textContent =
+      "After homes installed electric outlets, it opened the opportunity for personal use of electric devices. This invention made it possible to enjoy leisure activities in our homes today, such as watching tv, playing video games or chilling with our laptops.";
+    finalMessage.classList.add("finalMessage");
+
+    //append button and final message to body
     document.querySelector("body").appendChild(newRestartButton);
+    animateRestartBTN();
+    document.querySelector("body").appendChild(finalMessage);
+    animateFinalMessage();
 
     newRestartButton.addEventListener("click", () => {
       history.go(0);
@@ -466,15 +471,6 @@ function updateModal() {
 function addClickToYear(yearObject) {
   //select the button for the object
   document.getElementById(`${yearObject.yearID}`).addEventListener("click", () => {
-    console.log("button Clicked");
-
-    // if (document.querySelector(`.content .timeline-text`)) {
-
-    //   TweenMax.to(".content .timeline-text", 0.5, { opacity: 0 });
-    //   TweenMax.to(".content .timeline-image", 0.3, { opacity: 0 });
-    //   TweenMax.to(".content .timeline-text", 0.3, { opacity: 0, delay: 0.5 });
-    //   TweenMax.to(".content .timeline-image", 0.5, { opacity: 0, delay: 0.5 });
-    // }
     changeTimelineContent(yearObject);
   });
 }
@@ -488,21 +484,12 @@ function changeTimelineContent(timelineYear) {
   console.log(templateCopy);
 
   //   change text of timeline-text
-
   const timelineText = templateCopy.querySelector(".timeline-text p");
   timelineText.textContent = timelineYear.text;
 
   console.log("year" + timelineYear.yearID);
-  //change timeline-image
-  if (timelineYear.image) {
-    //   const imageCreated = document.createElement("p");
-    fetchSVGToContentTimeline(timelineYear.image, ".timeline-image");
-
-    const timelineImage = templateCopy.querySelector(".timeline-image");
-    // timelineImage.textContent = timelineYear.image;
-
-    // timelineImage.style.width = "100%";
-  }
+  //change timeline-image if the user clicked on a year before
+  fetchSVGToContentTimeline(timelineYear.image, ".timeline-image");
 
   console.log(templateCopy);
   const modal_content = document.querySelector(".content");
@@ -517,15 +504,6 @@ function changeTimelineContent(timelineYear) {
   gsap.fromTo(".content .timeline-image", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 10, duration: 1, delay: 0.5 });
 
   timelineArray.forEach(addClickToYear);
-}
-
-function updateTimelinePage(contentToUpdate) {
-  const modal_content = document.querySelector(".content");
-  modal_content.innerHTML = "";
-  //   modal_content.appendChild(contentToUpdate);
-
-  modal_content.appendChild(timelineImage);
-  modal_content.appendChild(timelineText);
 }
 
 function addClickNext() {
@@ -552,6 +530,12 @@ function addClickPrevious() {
 function animateBubbles() {
   const bubbles = document.querySelectorAll(".bubble");
   bubbles.forEach(animate);
+
+  const instructions = document.createElement("p");
+  instructions.textContent = "Click on the lamp to insert the material you selected!";
+  instructions.classList.add("instructions");
+  document.querySelector(".content").appendChild(instructions);
+  animateInstructions();
 }
 
 function random() {
@@ -604,6 +588,13 @@ function checkMaterial() {
     console.log("after");
 
     document.querySelector(".Lampst55").style.stroke = "orange";
+
+    //create winMessage element
+    const winMessage = document.createElement("h1");
+    winMessage.textContent = "Well done! You found it!";
+    winMessage.classList.add("win-message");
+    document.querySelector(".content").appendChild(winMessage);
+    animateWinMessage();
   } else {
     const lamp = document.querySelector("#lamp");
     TweenLite.to(lamp, 0.1, {
@@ -695,4 +686,20 @@ function animateTorchLamps() {
 
 function animateBooks() {
   gsap.fromTo("#bigbooks", 0.8, { opacity: 0 }, { opacity: 1, ease: Power1.easeInOut, delay: 0.8 });
+}
+
+function animateFinalMessage() {
+  gsap.fromTo(".finalMessage", 1, { x: -1000, opacity: 0 }, { x: 0, opacity: 0.7, ease: Bounce.easeInOut, delay: 5 });
+}
+
+function animateInstructions() {
+  gsap.fromTo(".instructions", 1, { scale: 0 }, { scale: 1, ease: Power1.easeInOut, transformOrigin: "left" });
+}
+
+function animateWinMessage() {
+  gsap.fromTo(".win-message", 1, { scale: 0, opacity: 0 }, { scale: 1, opacity: 0.7, ease: Power1.easeInOut, transformOrigin: "center" });
+}
+
+function animateRestartBTN() {
+  gsap.to(".restart", 1, { scale: 1.3, yoyo: true, repeat: -1, ease: Power1.easeInOut, delay: 5 });
 }

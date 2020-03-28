@@ -689,7 +689,7 @@ function animateBooks() {
 }
 
 function animateFinalMessage() {
-  gsap.fromTo(".finalMessage", 1, { x: -1000, opacity: 0 }, { x: 0, opacity: 0.7, ease: Bounce.easeInOut, delay: 5 });
+  gsap.fromTo(".finalMessage", 1, { x: -1000, opacity: 0 }, { x: 0, opacity: 0.7, ease: Bounce.easeOut, delay: 5 });
 }
 
 function animateInstructions() {

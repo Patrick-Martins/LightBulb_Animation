@@ -253,12 +253,14 @@ async function fetchTorchLampsSVG() {
   let response = await fetch("first-page-modal.svg");
   let mySVGData = await response.text();
   document.querySelector(".content").innerHTML += mySVGData;
+  animateTorchLamps();
 }
 
 async function fetchBooksSVG() {
   let response = await fetch("bigbooks.svg");
   let mySVGData = await response.text();
   document.querySelector(".content").innerHTML += mySVGData;
+  animateBooks();
 }
 async function fetchLamp() {
   let response = await fetch("edisons-first-lamp-process.svg");
@@ -465,6 +467,7 @@ function addClickToYear(yearObject) {
   //select the button for the object
   document.getElementById(`${yearObject.yearID}`).addEventListener("click", () => {
     console.log("button Clicked");
+
     // if (document.querySelector(`.content .timeline-text`)) {
 
     //   TweenMax.to(".content .timeline-text", 0.5, { opacity: 0 });
@@ -498,7 +501,7 @@ function changeTimelineContent(timelineYear) {
     const timelineImage = templateCopy.querySelector(".timeline-image");
     // timelineImage.textContent = timelineYear.image;
 
-    timelineImage.style.width = "100px";
+    // timelineImage.style.width = "100%";
   }
 
   console.log(templateCopy);
@@ -506,6 +509,10 @@ function changeTimelineContent(timelineYear) {
   modal_content.innerHTML = "";
   modal_content.appendChild(templateCopy);
 
+  //change active color
+  document.querySelector(`#${timelineYear.yearID} .timelineSVG-1`).style.fill = "#ffff00";
+
+  //add animation to text and image
   gsap.fromTo(".content .timeline-text", { autoAlpha: 0, x: -10 }, { autoAlpha: 1, x: 10, duration: 0.5 });
   gsap.fromTo(".content .timeline-image", { autoAlpha: 0, x: -20 }, { autoAlpha: 1, x: 10, duration: 1, delay: 0.5 });
 
@@ -667,4 +674,25 @@ function animateFactory() {
 function animateFlames() {
   TweenMax.from(".fire", 1, { scaleY: 0, ease: Elastic.easeOut, delay: 1.5 });
   TweenLite.to(".fire", 1, { scale: 1.1, repeat: -1, yoyo: true, ease: Power1.easeInOut, delay: 2.5 });
+}
+
+function animateTorchLamps() {
+  gsap.fromTo("#torch", 0.8, { opacity: 0 }, { opacity: 1, ease: Power1.easeInOut, delay: 0.3 });
+  gsap.fromTo("#yellow_torch", 0.5, { rotate: -10, transformOrigin: "bottom" }, { rotate: 10, transformOrigin: "bottom", repeat: -1, yoyo: true, ease: Power1.easeInOut });
+  gsap.fromTo("#orange_torch", 0.3, { rotate: 10, transformOrigin: "bottom" }, { rotate: -10, transformOrigin: "bottom", repeat: -1, yoyo: true, ease: Power1.easeInOut });
+  gsap.fromTo("#red_torch", 0.2, { rotate: -5, transformOrigin: "bottom" }, { rotate: 5, transformOrigin: "bottom", repeat: -1, yoyo: true, ease: Power1.easeInOut });
+
+  gsap.fromTo("#candle", 0.8, { opacity: 0 }, { opacity: 1, ease: Power1.easeInOut, delay: 1.5 });
+  gsap.fromTo("#yellow_flame", 0.5, { rotate: -10, transformOrigin: "bottom" }, { rotate: 10, transformOrigin: "bottom", repeat: -1, yoyo: true, ease: Power1.easeInOut, delay: 0.2 });
+  gsap.fromTo("#orange_flame", 0.3, { rotate: 10, transformOrigin: "bottom" }, { rotate: -10, transformOrigin: "bottom", repeat: -1, yoyo: true, ease: Power1.easeInOut, delay: 0.2 });
+  gsap.fromTo("#red_flame", 0.2, { rotate: -5, transformOrigin: "bottom" }, { rotate: 5, transformOrigin: "bottom", repeat: -1, yoyo: true, ease: Power1.easeInOut, delay: 0.2 });
+
+  gsap.fromTo("#gass-lamp", 0.8, { opacity: 0 }, { opacity: 1, ease: Power1.easeInOut, delay: 2.7 });
+  gsap.fromTo("#yellow_flame_lamp", 0.5, { rotate: -10, transformOrigin: "bottom" }, { rotate: 10, transformOrigin: "bottom", repeat: -1, yoyo: true, ease: Power1.easeInOut, delay: 0.4 });
+  gsap.fromTo("#orange_flame_lamp", 0.3, { rotate: 10, transformOrigin: "bottom" }, { rotate: -10, transformOrigin: "bottom", repeat: -1, yoyo: true, ease: Power1.easeInOut, delay: 0.4 });
+  gsap.fromTo("#red_flame_lamp", 0.2, { rotate: -5, transformOrigin: "bottom" }, { rotate: 5, transformOrigin: "bottom", repeat: -1, yoyo: true, ease: Power1.easeInOut, delay: 0.4 });
+}
+
+function animateBooks() {
+  gsap.fromTo("#bigbooks", 0.8, { opacity: 0 }, { opacity: 1, ease: Power1.easeInOut, delay: 0.8 });
 }

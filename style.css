@@ -43,24 +43,31 @@ h2 {
   grid-template-areas:
     "timelineSVG timelineSVG"
     "timelineText timelineImage";
-  grid-template-columns: 70% 30%;
+  grid-template-columns: 60% 40%;
   grid-template-rows: 10% 90%;
-  grid-gap: 5px;
+  grid-gap: 0px;
   width: 90%;
   height: 80%;
   margin: auto;
   align-items: center;
+  /* border: solid black; */
 }
 
 .timeline-text {
   grid-area: timelineText;
+  /* border: solid black; */
 }
 
 .timeline-image {
   grid-area: timelineImage;
+  width: 80%;
+  /* border: solid black; */
+}
+.content .timeline-image svg {
+  margin: auto;
 }
 
-svg#timeline {
+.content svg#timeline {
   grid-area: timelineSVG;
 }
 

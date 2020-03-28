@@ -485,7 +485,7 @@ function changeTimelineContent(timelineYear) {
 
   //   change text of timeline-text
   const timelineText = templateCopy.querySelector(".timeline-text p");
-  timelineText.textContent = timelineYear.text;
+  timelineText.innerHTML = timelineYear.text;
 
   console.log("year" + timelineYear.yearID);
   //change timeline-image if the user clicked on a year before
